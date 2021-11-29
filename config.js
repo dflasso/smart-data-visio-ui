@@ -1,6 +1,6 @@
 const config = {
   gatsby: {
-    pathPrefix: '/',
+    pathPrefix: '/smart-data-visio-ui',
     siteUrl: 'https://hasura.io',
     gaTrackingId: null,
     trailingSlash: false,
