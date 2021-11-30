@@ -1,0 +1,14 @@
+$layout-breakpoint-small: 600px;
+$layout-breakpoint-medium: 960px;
+$layout-breakpoint-large: 1280px;
+$layout-breakpoint-xlarge: 1920px;
+
+
+
+:export {
+    small: $layout-breakpoint-small;
+    xlarge: $layout-breakpoint-small;
+    medium: $layout-breakpoint-medium;
+    large : $layout-breakpoint-small;
+}
+

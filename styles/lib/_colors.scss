@@ -1,0 +1,33 @@
+$color-primary-main: #01579b;
+$color-primary-light: #4f83cc;
+$color-primary-dark: #002f6c;
+$color-primary-text: #ffffff;
+$color-primary-contrastText: #006BB4;
+$color-primary-contrast: #ffab00;
+
+
+$color-secondary-main: #84ffff;
+$color-secondary-light: #baffff;
+$color-secondary-dark: #4bcbcc;
+$color-secondary-text: #002f6c;
+$color-secondary-contrastText: #4bcbcc;
+$color-secondary-contrast: #f8bbd0;
+
+:export {
+    primary: {
+        main: $color-primary-main;
+        light: $color-primary-light;
+        dark: $color-primary-dark;
+        text: $color-primary-text;
+        contrastText: $color-primary-contrastText;
+        contrast: $color-primary-contrast;
+    };
+    secondary: {
+        main: $color-secondary-main;
+        light: $color-secondary-light;
+        dark: $color-secondary-dark;
+        text: $color-secondary-text;
+        contrastText: $color-secondary-contrastText;
+        contrast: $color-secondary-contrast;
+    }
+}
