@@ -1,0 +1,30 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.labelInputs {
+    color: $color-primary-dark;
+}
+
+.dividerForm {
+    color: $color-primary-dark;
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
+
+.titleForm {
+    border-color: $color-primary-dark;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 2px;
+    color: $color-primary-dark;
+    font-weight: 900;
+    font-family: fantasy;
+}
+
+.titleForm h5 div{
+    color: $color-primary-dark;
+    font-weight: 900;
+}
