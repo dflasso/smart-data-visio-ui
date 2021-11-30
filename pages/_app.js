@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import { Provider } from "next-auth/client"
-import theme from "theme";
+import theme from "../theme";
 import { ThemeProvider } from '@mui/private-theming';
 
 function MyApp({ Component, pageProps }) {
