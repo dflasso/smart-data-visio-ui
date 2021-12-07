@@ -1,0 +1,18 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.container{
+    padding: 5px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color-primary-main;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.container h4 {
+    color: $color-primary-main;
+    margin: 0px;
+}

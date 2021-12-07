@@ -1,0 +1,16 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.mainContent{
+    height: 95vh;
+}
+
+.footerContent{
+    background: $color-primary-dark;
+    height: 5vh;
+    color: $color-primary-text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
