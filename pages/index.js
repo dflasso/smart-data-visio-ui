@@ -2,7 +2,7 @@ import React from 'react'
 import PublicLayout from '../layouts/public_layout';
 import { publicPages } from "../components/NavigationItems"
 import { Grid } from '@mui/material';
-import CardLogin from '../modules/home/CardLogin';
+import CardLogin from '../modules/login/CardLogin';
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, CardContent, Divider, Grid, IconButton, InputAdornment, OutlinedInput, Typography } from '@mui/material'
+import { Button, CardContent, Grid, IconButton, InputAdornment, OutlinedInput, Typography } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import styles from "../../styles/LoginForm.module.scss";
 
