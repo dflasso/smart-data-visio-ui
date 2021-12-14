@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import LayoutContext, { actionTypes } from "../contexts/LayoutContext";
 
 export default function useLayout() {

@@ -1,14 +1,15 @@
-import { Grid } from '@mui/material'
 import React from 'react'
+import { PatientsProvider } from '../../contexts/PatientsContext';
 import PrivateLayout from '../../layouts/private_layout'
-import styles from "../../styles/ContentHome.module.scss";
+import ContentPatient from '../../modules/patient/ContentPatient';
 
-export default function Home() {
+
+export default function PatientAdmin() {
     return (
-        <PrivateLayout titlePage="Inicio">
-            <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} >
-
-            </Grid>
+        <PrivateLayout titlePage="Administración de Pacientes">
+            <PatientsProvider>
+                <ContentPatient />
+            </PatientsProvider>
         </PrivateLayout>
     )
 }

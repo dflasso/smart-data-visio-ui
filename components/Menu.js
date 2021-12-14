@@ -166,14 +166,6 @@ const itemsMenu = [
         principalMenu: null
     },
     {
-        id: "21",
-        name: "Todos los procesos",
-        icon: "find_in_page",
-        hasSubItems: false,
-        url: "/process",
-        principalMenu: "20"
-    },
-    {
         id: "22",
         name: "Admisión de aspirantes a pilotos",
         icon: "find_in_page",
