@@ -5,7 +5,7 @@ import GridAllProcess from '../../modules/process/GridAllProcess';
 import styles from "../../styles/Page.module.scss";
 import { getAllProcess } from '../../providers/ProcessData_Provider'
 
-export default function Home({ process }) {
+export default function Process({ process }) {
     return (
         <PrivateLayout titlePage="Procesos aplicados a los pacientes">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} >
