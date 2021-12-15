@@ -1,11 +1,11 @@
 import React from 'react'
 import PrivateLayout from '../../layouts/private_layout'
-import ContentHome from '../../modules/home/Content'
+import PreQuestionnaire from '../../modules/questionnaires/PreQuestionnaire'
 
-export default function Home() {
+export default function PagePostQuestionaire() {
     return (
         <PrivateLayout titlePage="Cuestionario Posterior a las Pruebas Visuales">
-            <ContentHome />
+            <PreQuestionnaire />
         </PrivateLayout>
     )
 }

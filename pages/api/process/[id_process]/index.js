@@ -7,7 +7,7 @@ const processDetail = {
         {
             id: "1",
             order: "1",
-            name: "Selección del pspirante",
+            name: "Selección del aspirante",
             description: "Consulte o Registre un nuevo paciente.",
             url: "/patient/admin"
         },
