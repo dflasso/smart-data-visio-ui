@@ -4,7 +4,7 @@ import Menu from "../components/Menu";
 import { LayoutProvider } from "../contexts/LayoutContext";
 import styles from '../styles/PrivateLayout.module.scss'
 
-export default function PrivateLayout({ children, titlePage = "", titleTab = "", msgFooter = "© 2021 CICTE - ESPE" }) {
+export default function PrivateLayout({ children, titlePage = "", titleTab = "", msgFooter = "© 2021 Smart Data Visio" }) {
     return (
         <>
             <Head>

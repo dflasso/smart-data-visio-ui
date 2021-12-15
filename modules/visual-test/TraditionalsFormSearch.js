@@ -1,14 +1,15 @@
 import { Search } from '@mui/icons-material'
 import { Button, Card, FormHelperText, Grid, InputAdornment, TextField } from '@mui/material'
 import React from 'react'
+import styles from "../../styles/TaditionalPage.module.scss";
 
-export default function FormFilterPatients() {
+export default function TraditionalsFormSearch() {
     return (
-        <Grid item xs={12} md={11} lg={11}>
-            <Card>
-                <Grid container alignContent="center" alignSelf="center" spacing={1} justifyContent="center">
+        <Grid item xs={12} md={11} lg={11} container alignItems="center" justifyContent="center" >
+            <Card className={styles.cardFilter}>
+                <Grid item xs={12} md={11} lg={11} container alignContent="center" alignSelf="center" spacing={1} justifyContent="center">
 
-                    <Grid item xs={12} md={6} lg={8}>
+                    <Grid item xs={12} md={10} lg={8}>
                         <TextField
                             size="small"
                             variant="outlined"
@@ -21,7 +22,7 @@ export default function FormFilterPatients() {
                                 ),
                             }}
                         />
-                        <FormHelperText>Puede filtrar por nombre, correo electrónico, Núm. Identificación. </FormHelperText>
+                        <FormHelperText>Puede filtrar por nombre, código o descripción. </FormHelperText>
                     </Grid>
                     <Grid item xs={12} md={1} lg={1} textAlign="center">
                         <Button variant="contained" >Filtrar</Button>

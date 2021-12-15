@@ -14,6 +14,8 @@ export default function SearchPatients() {
 
             <Grid container direction="row" justifyContent="center" alignItems="center" >
                 <CardDetailPatiend />
+                <CardDetailPatiend />
+                <CardDetailPatiend />
             </Grid>
 
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.containerPagination}>

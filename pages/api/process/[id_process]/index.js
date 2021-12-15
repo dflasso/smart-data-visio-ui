@@ -16,7 +16,7 @@ const processDetail = {
             order: "2",
             name: "Pruebas Tradicionales",
             description: "Registre los resultados de las pruebas tradicionales.",
-            url: "/visual-tests/traditionals"
+            url: "/visual-tests/home-traditionals"
         },
         {
             id: "3",

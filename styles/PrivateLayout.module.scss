@@ -2,11 +2,16 @@
 @import "lib/dimensions";
 @import "lib/typografic";
 
+
 .mainContent{
-    height: 95vh;
+    margin-bottom: 25px;
 }
 
 .footerContent{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background: $color-primary-dark;
     height: 5vh;
     color: $color-primary-text;

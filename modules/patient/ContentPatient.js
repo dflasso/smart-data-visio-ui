@@ -7,6 +7,7 @@ import SearchPatients from './TabSearchPatients';
 import TabRegisterPatient from './TabRegisterPatient';
 import TabEditPatient from './TabEditPatient';
 import styles from "../../styles/ContentPatient.module.scss";
+import FloatingActionsPatiens from './FloatingActionsPatiens';
 
 export default function ContentPatient() {
     const { state } = useTabsPatients()
@@ -19,6 +20,7 @@ export default function ContentPatient() {
                 <TabRegisterPatient />
                 <TabEditPatient />
             </TabContext>
+            <FloatingActionsPatiens />
         </Grid>
     )
 }
