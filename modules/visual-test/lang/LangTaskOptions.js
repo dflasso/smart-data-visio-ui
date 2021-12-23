@@ -1,40 +1,28 @@
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, FormGroup, Slide, TextField } from '@mui/material'
-import React, { useState } from 'react'
-import LabelText from '../../components/LabelText';
-import UnknowOption from '../../components/UnknowOption';
+import React from 'react'
+import LabelText from '../../../components/LabelText';
+import UnknowOption from '../../../components/UnknowOption';
+import useLangTaskOptions from '../../../hooks/useLangTaskOptions';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const unknowOptionBase = {
-    id: "1",
-    label: "Otro",
-    value: ""
-}
 
-export default function LangTaskOptions({ optionsKnow = [] }) {
-    const [open, setOpen] = useState(false)
-    const [unknowOptions, setunknowOptions] = useState(null)
+/**
+ * Componente que renderiza las diferentes opciones que tiene cada tarjeta de lang
+ * @param {*} param0 
+ * @returns 
+ */
+export default function LangTaskOptions({ optionsKnow = [], onSave, idTask = "", descriptionTask = "", purpose = "" }) {
+    const { open,
+        unknowOptions,
+        handleClickOpen,
+        handleClose,
+        handleClickAddUnknowOption,
+        handleClickDeleteUnknowOption,
+        handleSave } = useLangTaskOptions(onSave, idTask, descriptionTask)
 
-    const handleClickOpen = () => {
-        setOpen(true)
-        setunknowOptions([unknowOptionBase])
-    }
-
-    const handleClose = () => setOpen(false)
-
-    const handleClickAddUnknowOption = () => {
-        const newId = Number(unknowOptions[unknowOptions.length - 1].id) + 1
-        const newUnknowOptions = [...unknowOptions, { ...unknowOptionBase, id: newId.toString() }]
-        if (Array.isArray(newUnknowOptions)) {
-            setunknowOptions(newUnknowOptions)
-        }
-    }
-
-    const handleClickDeleteUnknowOption = (id) => {
-        setunknowOptions(preUnknowOptions => preUnknowOptions.filter(item => item.id !== id))
-    }
 
     if (!open) {
         return (
@@ -43,8 +31,6 @@ export default function LangTaskOptions({ optionsKnow = [] }) {
             </Button>
         )
     }
-
-
 
     return (
         <>
@@ -58,10 +44,10 @@ export default function LangTaskOptions({ optionsKnow = [] }) {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle> Lamina 1 </DialogTitle>
+                <DialogTitle> {descriptionTask} </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        Por favor selección los objetos vistos por el paciente:
+                        {purpose}
                     </DialogContentText>
                 </DialogContent>
                 <DialogContent dividers>
@@ -96,7 +82,7 @@ export default function LangTaskOptions({ optionsKnow = [] }) {
                 </DialogContent>
                 <DialogActions>
                     <Button variant="contained" color="error" onClick={handleClose}>Cancelar</Button>
-                    <Button variant="contained" onClick={handleClose}>Registrar</Button>
+                    <Button variant="contained" onClick={handleSave}>Registrar</Button>
                 </DialogActions>
             </Dialog>
         </>

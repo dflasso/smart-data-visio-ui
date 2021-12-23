@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
 import React from 'react'
-import PrivateLayout from '../../layouts/private_layout'
-import GridAllProcess from '../../modules/process/GridAllProcess';
-import StepsProcess from '../../modules/process/StepsProcess';
-import { getStepsProcess } from '../../providers/ProcessData_Provider';
-import styles from "../../styles/Page.module.scss";
+import PrivateLayout from '../../../layouts/private_layout'
+import GridAllProcess from '../../../modules/process/GridAllProcess';
+import StepsProcess from '../../../modules/process/StepsProcess';
+import { getStepsProcess } from '../../../providers/ProcessData_Provider';
+import styles from "../../../styles/Page.module.scss";
 
 export default function EvalPilots({ id, name, description, imageUrl, steps, sumaryProcess }) {
     const process = { id, name, description, imageUrl, url: "/process" }

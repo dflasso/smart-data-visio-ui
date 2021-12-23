@@ -58,7 +58,7 @@ export default function LtsTraditionalsTestLang({ ltsTest = [] }) {
         <Grid item xs={12} md={11} lg={11} container alignItems="center" justifyContent="center" spacing={1}>
             {
                 testMock.map(task => (
-                    <VisualTestCard key={task.idTask} statement={task.statement} purpose={task.purpose} image={task.image} />
+                    <VisualTestCard key={task.idTask} id={task.idTask} statement={task.statement} purpose={task.purpose} image={task.image} />
                 ))
             }
         </Grid>

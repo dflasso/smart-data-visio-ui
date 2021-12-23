@@ -1,6 +1,7 @@
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import React from 'react'
 import LangTaskOptions from './LangTaskOptions'
+import useTestLangCards from "../../../hooks/useTestLangCards";
 
 const optionsKnow = [
     {
@@ -23,11 +24,12 @@ const optionsKnow = [
     }
 ]
 
-export default function LangTestCard({ statement, purpose, image }) {
+export default function LangTestCard({ id, statement, purpose, image }) {
+    const { addResultCard } = useTestLangCards();
     return (
         <Grid item xs={12} sm={12} md={6} lg={4} xl={3} >
             <Card>
-                <CardActionArea>
+                <CardActionArea >
                     <CardMedia
                         component="img"
                         height="140"
@@ -44,7 +46,13 @@ export default function LangTestCard({ statement, purpose, image }) {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <LangTaskOptions optionsKnow={optionsKnow} />
+                    <LangTaskOptions
+                        optionsKnow={optionsKnow}
+                        onSave={addResultCard}
+                        idTask={id}
+                        descriptionTask={statement}
+                        purpose={purpose}
+                    />
                 </CardActions>
             </Card>
         </Grid>

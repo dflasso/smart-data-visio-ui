@@ -1,0 +1,42 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.mainContent{
+    padding-top: 50px;
+    display: flex;
+}
+
+.summaryTestLangContainre{
+    width: 100%;
+}
+
+.summaryTestLangCardResultContainer {
+    padding-top: 15px;
+}
+
+.summaryTestLangCardResultCard {
+    width: 95%;
+}
+
+.summaryTestLangCardIconBtn {
+    padding: 1px;
+    color: $color-primary-dark;
+}
+
+.summaryTestLangCardIconBtnDelete {
+    padding: 1px;
+    color: $color-error-main;
+}
+
+
+.summaryTestLangTableHeader {
+    background-color: $color-primary-dark;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    color: $color-primary-text;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}

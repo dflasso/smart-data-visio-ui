@@ -1,0 +1,42 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.containerTable {
+    width: 95%;
+}
+
+.containerActions {
+    width: 95%;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.headerTable {
+    background-color: $color-primary-dark;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    color: $color-primary-text;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+.headerTableMoreOptionsFilterContainer {
+    margin-top: 10px;
+    border-style: solid;
+    border-color: $color-primary-dark;
+    border-width: 1px 0px 0px 0px;
+    padding-top: 5px;
+}
+
+
+.BtnReportRow {
+    color: $color-error-main;
+}
+
+.BtnDetailRow {
+    color: $color-primary-main;
+}
