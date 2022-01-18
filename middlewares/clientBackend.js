@@ -5,6 +5,4 @@ const clientBackendCore = axios.create({
     baseURL: urlBase
 })
 
-export default {
-    clientBackendCore
-}
+export default clientBackendCore

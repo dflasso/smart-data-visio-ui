@@ -1,18 +1,15 @@
 import { Grid } from '@mui/material';
 import React from 'react'
 import PrivateLayout from '../../../layouts/private_layout'
-import GridAllProcess from '../../../modules/process/GridAllProcess';
-import StepsProcess from '../../../modules/process/StepsProcess';
-import { getStepsProcess } from '../../../providers/ProcessData_Provider';
+import RegisterOphthalmologicalTests from "../../../modules/process/register_ophthalmological_tests"
 import styles from "../../../styles/Page.module.scss";
 
-export default function EvalPilots({ id, name, description, imageUrl, steps, sumaryProcess }) {
-    const process = { id, name, description, imageUrl, url: "/process" }
+export default function EvalPilots({ idTest }) {
+
     return (
-        <PrivateLayout titlePage="Proceso de Selección a pilotos de las FF. AA.">
+        <PrivateLayout titlePage="Ophthalmological tests">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} spacing={2} >
-                <GridAllProcess process={[process]} redirect={false} />
-                <StepsProcess steps={steps} sumaryProcess={sumaryProcess} />
+                <RegisterOphthalmologicalTests idTest={idTest} />
             </Grid>
         </PrivateLayout>
     )
@@ -20,16 +17,15 @@ export default function EvalPilots({ id, name, description, imageUrl, steps, sum
 
 
 export async function getServerSideProps(context) {
-
-    const processDetail = await getStepsProcess("1", () => { });
-    const { id, name, description, imageUrl, steps } = processDetail
-    const sumaryProcess = {
-        currentsStep: 0
+    let idTest = '0'
+    if (typeof context.query !== "undefined" && typeof context.query !== "object") {
+        if (typeof context.query.id !== "undefined" && context.query.id !== null) {
+            idTest = context.query.id
+        }
     }
     return {
         props: {
-            id, name, description, imageUrl, steps,
-            sumaryProcess
+            idTest
         }, // will be passed to the page component as props
     }
 }

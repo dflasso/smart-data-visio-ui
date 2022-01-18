@@ -24,18 +24,10 @@ export default function GridAllProcess({ process, redirect = true }) {
                         <CardActionArea onClick={handleClick(item.url)}  >
                             <CardMedia
                                 component="img"
-                                height="140"
+                                height="200"
                                 alt={item.name}
                                 image={item.imageUrl}
                             />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    {item.name}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {item.description}
-                                </Typography>
-                            </CardContent>
                         </CardActionArea>
                     </Card>
                 </Grid>

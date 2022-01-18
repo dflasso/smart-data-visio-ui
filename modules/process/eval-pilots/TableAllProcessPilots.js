@@ -5,7 +5,7 @@ import TableAllProcessPilotsBody from './TableAllProcessPilotsBody';
 import TableAllProcessPilotsFormFilter from './TableAllProcessPilotsFormFilter';
 import TableAllProcessPilotsHeader from './TableAllProcessPilotsHeader';
 
-export default function TableAllProcessPilots() {
+export default function TableAllProcessPilots({ rows = [] }) {
 
     return (
         <Card className={styles.containerTable}>
@@ -14,7 +14,7 @@ export default function TableAllProcessPilots() {
             </CardContent>
             <CardContent>
                 <TableAllProcessPilotsHeader />
-                <TableAllProcessPilotsBody />
+                <TableAllProcessPilotsBody rows={rows} />
             </CardContent>
         </Card>
     )

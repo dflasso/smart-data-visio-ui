@@ -1,11 +1,21 @@
-import React from 'react'
-import PrivateLayout from '../../layouts/private_layout'
-import PreQuestionnaire from '../../modules/questionnaires/PreQuestionnaire'
+import { Grid } from "@mui/material";
+import React from "react";
+import PrivateLayout from "../../layouts/private_layout";
+import HeaderQuestionnaire from "../../modules/questionnaires/HeaderQuestionnaire";
+import ItemsQuestionnaire from "../../modules/questionnaires/ItemsQuestionnaire";
+import styles from "../../styles/QuestionairePre.module.scss";
 
-export default function PagePostQuestionaire() {
-    return (
-        <PrivateLayout titlePage="Cuestionario Posterior a las Pruebas Visuales">
-            <PreQuestionnaire />
-        </PrivateLayout>
-    )
-}
+const QuestionairePost = () => {
+  return (
+    <>
+      <PrivateLayout titlePage="Cuestionario Posterior a las Pruebas Visuales">
+        <Grid container direction="row" justifyContent="center" className={styles.mainContent}>
+          <HeaderQuestionnaire title="Completar después de hacer la tarea" />
+          <ItemsQuestionnaire />
+        </Grid>
+      </PrivateLayout>
+    </>
+  );
+};
+
+export default QuestionairePost;

@@ -12,16 +12,16 @@ export default function TableAllProcessPilotsFormFilter() {
         <>
             <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start" spacing={1}>
                 <Grid item xs={12} sm={12} md={3} lg={3} xl={3} >
-                    <Subtitle title="Procesos Registrados" icon="manage_accounts" />
+                    <Subtitle title="Pruebas Registradas" icon="manage_accounts" />
                 </Grid>
                 <Grid item xs={12} sm={12} md={5} lg={5} xl={6} >
                     <TextField
                         size="small"
-                        label="Buscar procesos"
-                        placeholder="Buscar procesos..."
+                        label="Buscar prueba"
+                        placeholder="Buscar pruebas oftalmológicas de pacientes..."
                         variant="outlined"
                         fullWidth
-                        helperText="Puede filtrar los procesos por los núm. documento, nombre del Paciente o número de ticket."
+                        helperText="Puede filtrar las pruebas por los núm. documento, nombre del Paciente o número de ticket."
                     />
                 </Grid>
                 <Grid item xs={6} sm={6} md={2} lg={2} xl={1} textAlign="center" >

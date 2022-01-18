@@ -22,10 +22,8 @@ const PreQuestionnaire = () => {
   return (
     <Grid item xs={12} md={10} lg={8}>
       <Card>
-        <Typography align="center" variant="h5"><strong>Completar <i>ANTES</i> de hacer la tarea</strong></Typography > <br />
-        <Typography align="center" variant="h6">Seleccione la opción que crea que se ajusta más a cómo se siente <strong>ahora mismo</strong></Typography > <br />
         <Grid container direction="row" alignItems="center" justifyContent="center" spacing={1}>
-          <List sx={{ width: "90%", maxWidth: 710, bgcolor: "background.paper" }}>
+          <List sx={{ width: "100%", maxWidth: 610, bgcolor: "background.paper" }}>
             {questions.map((valueQuestion) => (
               <ListItem key={valueQuestion} disableGutters>
                 <Grid container spacing={1}>

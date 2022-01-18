@@ -1,0 +1,76 @@
+{
+    "evaluationsTest": [
+        {
+            "id": 1,
+            "frequencies": [
+                "Nunca",
+                "Alguna vez al mes",
+                "Alguna vez a la semana",
+                "Casi todos los días",
+                "Todos los días"
+            ],
+            "items": [
+                "Juego a videojuegos en ordenador, teléfono móvil",
+                "Juego a video juegos en 3D",
+                "Veo películas en 3D"
+            ],
+            "title":"Experiencias"
+        },
+        {
+            "id": 2,
+            "frequencies": [
+                "Nunca",
+                "Pocas veces",
+                "Alguna vez",
+                "Casi siempre",
+                "Siempre"
+            ],
+            "items": [
+                "He entendido lo que tengo que hacer en cada momento",
+                "Volvería a participar",
+                "Lo he pasado bien"
+            ],
+            "title":"Sobre la aplicación"
+        },
+        {
+            "id": 3,
+            "frequencies": [
+                "Nada",
+                "Poco",
+                "Regular",
+                "Bastante",
+                "Mucho"
+            ],
+            "items": [
+                "En alguno momento me ha parecido que los objetos tenían profundidad",
+                "La aplicación es fácil de usar",
+                "El 3D mejora la experiencia general de la aplicación",
+                "Me he sentido dentro del entorno",
+                "El sentido del movimiento por el entorno virtual 3D ha sido convincente/realista",
+                "Me he sentido sumergido en la experiencia del entorno virtual",
+                "Me ha costado acostumbrarme al 3D (la experiencia del entorno virtual)",
+                "Me he concentrado en la tarea en lugar de en cómo utilizar el dispositivo",
+                "El entorno ha sido sensible a las acciones que ha realizado",
+                "Mi interacción con el entorno 3D ha sido natural",
+                "He podido examinar los objetos del entorno",
+                "En conclusión, la experiencia de movimiento e interacción con el entorno ha sido"
+            ],
+            "title":"Sobre el entorno y el dispositivo"
+        },
+        {
+            "id": 4,
+            "frequencies": [
+                "Muy malo",
+                "Bastante malo",
+                "Regular",
+                "Bastante bueno",
+                "Muy bueno"
+            ],
+            "items": [
+                "Mi experiencia con esta aplicación en comparación con otras experiencias 3D previas es...",
+                "La interacción con el joystick, gamepad en comparación conotras experiencias como wii, etc...ha sido"
+            ],
+            "title":"Valorar la aplicación usada"
+        }
+    ]
+}

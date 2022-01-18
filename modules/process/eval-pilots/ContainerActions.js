@@ -13,7 +13,7 @@ export default function ContainerActions() {
             <Grid container direction="row" justifyContent="flex-start" alignItems="center" className={styles.mainContent} >
 
                 <Grid item xs={6} sm={5} md={4} lg={3} xl={2} >
-                    <Button variant="outlined" onClick={handleCreateProcess} > Nuevo Proceso </Button>
+                    <Button variant="outlined" onClick={handleCreateProcess} > Registrar Prueba </Button>
                 </Grid>
                 <Grid item xs={6} sm={5} md={4} lg={3} xl={2}>
                     <Button variant="outlined" > Reporte Lote Pacientes </Button>

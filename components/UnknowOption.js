@@ -26,16 +26,6 @@ export default function UnknowOption({ label = "", handleDeleteOption, handlAddO
                     size="small"
                 />
             </Grid>
-            <Grid item xs={1} md={1} lg={1} >
-                <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleClickAdd} >
-                    <AddBoxRounded />
-                </IconButton>
-            </Grid>
-            <Grid item xs={1} md={1} lg={1} >
-                <IconButton color="primary" aria-label="upload picture" component="span" color="error" onClick={handleClickDelete} >
-                    <BackspaceRounded />
-                </IconButton>
-            </Grid>
         </Grid>
     )
 }

@@ -167,7 +167,7 @@ const itemsMenu = [
     },
     {
         id: "22",
-        name: "Admisión de aspirantes a pilotos",
+        name: "Pruebas Optamológicas",
         icon: "find_in_page",
         hasSubItems: false,
         url: "/process/eval-pilots",

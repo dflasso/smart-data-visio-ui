@@ -1,7 +1,7 @@
 const processDetail = {
     id: "1",
-    name: "Aspirantes a pilotos de las FF. AA.",
-    description: "Proceso de Selección a pilotos de las FF. AA.",
+    name: "Visio Stereo Diagnostic",
+    description: "Pruebas visuales",
     imageUrl: "https://www.osmaviationacademy.com/hubfs/01.%20All%20photos/05.%20Blog%20-%20Images/09.%20Medical/Medical%20requirements%20for%20pilots.jpg",
     steps: [
         {
@@ -14,8 +14,8 @@ const processDetail = {
         {
             id: "2",
             order: "2",
-            name: "Pruebas Tradicionales",
-            description: "Registre los resultados de las pruebas tradicionales.",
+            name: "Selecione de la Prueba",
+            description: "Selecione de la Prueba.",
             url: "/visual-tests/home-traditionals"
         },
         {
@@ -44,7 +44,7 @@ const processDetail = {
             order: "7",
             name: "Evaluación",
             description: "Formulario de preguntas enfocadas a determinar y corelacionar los resultados.",
-            url: "/evaluations/visual-test"
+            url: "/evaluations/evaluation-test"
         },
         {
             id: "8",

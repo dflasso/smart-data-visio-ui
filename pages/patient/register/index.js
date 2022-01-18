@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material';
 import React from 'react'
-import PrivateLayout from '../../layouts/private_layout'
-import FormRegisterPatient from '../../modules/patient/FormRegisterPatient';
+import PrivateLayout from '../../../layouts/private_layout'
+import FormRegisterPatient from '../../../modules/patient/FormRegisterPatient';
 
-import styles from "../../styles/RegisterPatient.module.scss";
+import styles from "../../../styles/RegisterPatient.module.scss";
 
 export default function RegisterPatient() {
     return (

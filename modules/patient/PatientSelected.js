@@ -25,7 +25,7 @@ export default function PatientSelected({ user = userDefault }) {
                         {user.names} {" "} {user.lastName}
                     </Grid>
                     <Grid item xs={6} md={5} lg={3}  >
-                        <label> Doc. Identificación</label>
+                        <label> Cédula/Pasaporte</label>
                     </Grid>
                     <Grid item xs={6} md={5} lg={3}>
                         {user.numDocumentation}
