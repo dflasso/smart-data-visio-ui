@@ -1,11 +1,30 @@
+import { Grid } from '@mui/material';
 import React from 'react'
 import PrivateLayout from '../../layouts/private_layout'
-import ContentHome from '../../modules/home/Content'
+import GridAllProcess from '../../modules/process/GridAllProcess';
+import styles from "../../styles/Page.module.scss";
+import { getAllProcess } from '../../providers/ProcessData_Provider'
 
-export default function Home() {
+export default function Home({ process }) {
     return (
-        <PrivateLayout titlePage="Inicio">
-            <ContentHome />
+        <PrivateLayout titlePage="Pruebas médicas">
+            <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} >
+                <GridAllProcess process={process} />
+            </Grid>
         </PrivateLayout>
     )
+}
+
+/**
+ * @see https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+ * @param {*} context 
+ * @returns 
+ */
+export async function getServerSideProps(context) {
+    const process = await getAllProcess()
+    return {
+        props: {
+            process
+        }, // will be passed to the page component as props
+    }
 }

@@ -1,8 +1,9 @@
 import { Menu } from "@mui/icons-material";
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+import { useEffect } from "react";
 
 import useLayout from "../hooks/useLayout";
+import BtnsLftHeader from "./BtnsLftHeader";
 
 /**
  * Renderiza el Header de paginas que necesitan previa autenticacion
@@ -25,18 +26,27 @@ export default function HeaderPrivatePage({ title = "" }) {
     return (
         <AppBar position="fixed" open={openMenu}>
             <Toolbar>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={handleDrawerOpen}
-                    edge="start"
-                    sx={{ mr: 2, ...(openMenu && { display: 'none' }) }}
-                >
-                    <Menu />
-                </IconButton>
-                <Typography variant="h6" noWrap component="div">
-                    {headerTitle}
-                </Typography>
+                <Grid container direction="row" justifyContent="space-between" alignItems="center" >
+                    <Grid items xs={1} md={1} lg={1}>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            sx={{ mr: 2, ...(openMenu && { display: 'none' }) }}
+                        >
+                            <Menu />
+                        </IconButton>
+                    </Grid>
+                    <Grid items md={8} lg={10} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}  >
+                        <Typography variant="h6" noWrap component="div">
+                            {headerTitle}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={3} md={2} lg={1}>
+                        <BtnsLftHeader />
+                    </Grid>
+                </Grid>
             </Toolbar>
         </AppBar>
     )

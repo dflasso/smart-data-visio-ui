@@ -13,7 +13,35 @@ const defaultTheme = createTheme({
     typography: typography,
     breakpoints: breakpoints,
     palette: palette,
-
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-selected": {
+                        color: palette.secondary.contrastText
+                    }
+                }
+            }
+        },
+        MuiButtonBase: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-selected": {
+                        color: palette.secondary.contrastText
+                    }
+                }
+            }
+        },
+        MuiTab: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-selected": {
+                        color: palette.secondary.contrastText
+                    }
+                }
+            }
+        }
+    }
 });
 
 export default defaultTheme

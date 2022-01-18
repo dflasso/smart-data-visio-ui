@@ -1,0 +1,22 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.continer{
+    top: 0;
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 0px;
+    margin-bottom: 60px;
+}
+
+.cardFilter {
+    min-width: 90%;
+    max-width: 100%;
+}
+
+
+.mainContent{
+    padding-top: 60px;
+    display: flex;
+}

@@ -1,11 +1,19 @@
+import { Grid } from '@mui/material'
 import React from 'react'
 import PrivateLayout from '../../layouts/private_layout'
-import ContentHome from '../../modules/home/Content'
+import HeaderQuestionnaire from '../../modules/questionnaires/HeaderQuestionnaire';
+import ItemsQuestionnaire from '../../modules/questionnaires/ItemsQuestionnaire';
+import styles from "../../styles/QuestionairePre.module.scss";
 
-export default function Home() {
+
+
+export default function QuestionairePre() {
     return (
-        <PrivateLayout titlePage="Inicio">
-            <ContentHome />
+        <PrivateLayout titlePage="Cuestionario Previo a las Pruebas Visuales">
+            <Grid container direction="row" justifyContent="center" className={styles.mainContent} >
+                <HeaderQuestionnaire title="Completar antes de hacer la tarea" />
+                <ItemsQuestionnaire />
+            </Grid>
         </PrivateLayout>
     )
 }

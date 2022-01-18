@@ -1,0 +1,14 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.cardContainer{
+    width: 95%;
+    margin-top: 10px;
+}
+
+.cardHeader{
+    background-color: $color-primary-dark;
+    color: $color-primary-text;
+    padding: 5px;
+}

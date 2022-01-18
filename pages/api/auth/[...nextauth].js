@@ -1,13 +1,20 @@
+// next-auth
 import NextAuth from "next-auth"
-import Providers from 'next-auth/providers'
+import CredentialsProvider from "next-auth/providers/credentials"
+
+// Provider
+import { providers } from "../../../providers"
+
+const backend = providers.backend
 
 const options = {
     providers: [
-        Providers.Credentials({
-            name: "CUSTOM_BACKEND",
+        CredentialsProvider({
+            id: "BACKEND_DATA_STEREO",
+            name: "BACKEND DATA STEREO",
             credentials: {
-                tokenAccess: { label: "tokenAccess", type: "text" },
-                tokenType: { label: "tokenType", type: "text" }
+                username: { label: "username", type: "text" },
+                password: { label: "password", type: "password" }
             },
             authorize: (credentials) => new Promise((resolve) => {
                 /**
@@ -17,11 +24,16 @@ const options = {
                  * 
                  * TODO: llamar a la api y refrescar o validar el token enviado por un microfroend de login
                  */
-                const dataUser = {
-                    jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-                    refreshToken: "/api_refresh"
-                }
-                resolve(dataUser)
+                backend.login({ username: credentials.username, password: credentials.password })
+                    .then(
+                        response => {
+                            resolve({ jwtAccess: response.jwt })
+                        }
+                    ).catch(
+                        error => {
+                            resolve(null)
+                        }
+                    )
             })
         })
     ],
@@ -50,19 +62,16 @@ const options = {
          * @param  {boolean} isNewUser True if new user (only available on sign in)
          * @return {object}            JSON Web Token that will be saved
          */
-        async jwt(token, user, account, profile, isNewUser) {
-            // Add access_token to the token right after signin
-            if (account?.accessToken) {
-                token.accessToken = account.accessToken
-            }
+        async jwt({ token, user, account, profile, isNewUser }) {
 
-            if (typeof token === "object" && token !== null) {
-                if (token.user) {
-                    return token
-                }
-            }
+            // console.log(token)
+            // console.log(user)
+            // console.log(account)
+            // console.log(profile)
+            // console.log(isNewUser)
 
-            return { user, account, profile, isNewUser }
+
+            return token
         },
         /**
          * @param  {object} session      Session object
@@ -70,13 +79,12 @@ const options = {
          *                               JSON Web Token (if not using database sessions)
          * @return {object}              Session that will be returned to the client 
          */
-        async session(session, token) {
+        async session({ session, user, token }) {
             // Add property to session, like an access_token from a provider.
-            return {
-                ...session,
-                ...token,
-                user: token.user,
-            }
+            // console.log(session)
+            // console.log(user)
+            // console.log(token)
+            return session
         }
     }
 }

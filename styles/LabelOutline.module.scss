@@ -1,0 +1,30 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.containerLabel {
+    width: 100%;
+    
+    padding: 4px;
+    border-style: solid;
+    border-color: $color-primary-main;
+    border-width: 1px;
+    border-radius: 8px;
+    background-color: $color-primary-text;
+}
+
+.containerLabel label {
+    color: $color-primary-main;
+}
+
+
+
+
+.containerLabelText {
+    width: 100%;
+    
+}
+
+.containerLabelText label {
+    color: $color-primary-main;
+}

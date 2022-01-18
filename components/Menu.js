@@ -150,15 +150,15 @@ const itemsMenu = [
         principalMenu: "6"
     },
     {
-        id: "18",
-        name: "Grupo de Pruebas",
+        id: "19",
+        name: "Grupo de Pruebas Visuales",
         icon: "find_in_page",
         hasSubItems: false,
         url: "/report/by-visual-test",
         principalMenu: "6"
     },
     {
-        id: "19",
+        id: "20",
         name: "Procesos",
         icon: "list",
         hasSubItems: true,
@@ -166,12 +166,12 @@ const itemsMenu = [
         principalMenu: null
     },
     {
-        id: "20",
-        name: "Admisión de aspirantes a pilotos",
+        id: "22",
+        name: "Pruebas Optamológicas",
         icon: "find_in_page",
         hasSubItems: false,
         url: "/process/eval-pilots",
-        principalMenu: "19"
+        principalMenu: "20"
     },
 ]
 
