@@ -1,5 +1,7 @@
 // React js
 import React from 'react'
+//next 
+import { useRouter } from 'next/router'
 
 //Material ui
 import { Button, Grid } from '@mui/material'
@@ -8,7 +10,12 @@ import { Button, Grid } from '@mui/material'
 import CardNavHorizontal from '../../components/CardNavHorizontal'
 
 
+
 export default function ContainerQuestionaries() {
+    const router = useRouter()
+    const handleOnClick = () => {
+        router.push("/questionnaire/pre")
+    }
     return (
         <CardNavHorizontal
             iconAvatarHeader="description"
@@ -16,15 +23,15 @@ export default function ContainerQuestionaries() {
         >
             <Grid container direction="row" spacing={4}>
                 <Grid item xs={11} md={6} lg={3}>
-                    <Button variant="outlined" fullWidth>
+                    <Button variant="outlined" fullWidth onClick={handleOnClick}>
                         Ejecutar Cuestionario
                     </Button>
                 </Grid>
-                <Grid item xs={11} md={6} lg={3}>
+                {/* <Grid item xs={11} md={6} lg={3}>
                     <Button variant="outlined" fullWidth >
                         Detalles Cuestionario
                     </Button>
-                </Grid>
+                </Grid> */}
             </Grid>
         </CardNavHorizontal>
     )

@@ -2,19 +2,14 @@ import { AddBoxRounded, BackspaceRounded } from '@mui/icons-material'
 import { Grid, IconButton, TextField } from '@mui/material'
 import React from 'react'
 
-export default function UnknowOption({ label = "", handleDeleteOption, handlAddOption, id = "1" }) {
+export default function UnknowOption({ label = "", handleDeleteOption, handlAddOption, id_reference = "1" }) {
 
-    const handleClickAdd = () => {
+    const handleClickAdd = (event) => {
         if (typeof handlAddOption === "function") {
-            handlAddOption()
+            handlAddOption({ value: event.target.value, id_reference })
         }
     }
 
-    const handleClickDelete = () => {
-        if (typeof handlAddOption === "function") {
-            handleDeleteOption(id)
-        }
-    }
 
     return (
         <Grid container >
@@ -24,6 +19,7 @@ export default function UnknowOption({ label = "", handleDeleteOption, handlAddO
                     type='text'
                     fullWidth
                     size="small"
+                    onChange={handleClickAdd}
                 />
             </Grid>
         </Grid>

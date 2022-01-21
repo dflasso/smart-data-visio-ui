@@ -1,32 +1,45 @@
 import React, { useReducer } from 'react'
 
 const initData = {
-    currentTap: "2",
-    cards: []
+    cards: [],
+    results: {},
+    showBackdrop: false,
+    idTest: "0"
 }
 
 const context = React.createContext(initData)
 
 
 export const actionTypes = {
-    UPDATE_TAB: 1,
-    ADD_CARD_LANG: 2
+    ADD_RESULT_LANG: 1,
+    ADD_CARDS_LANG: 2,
+    SET_ID_TEST_OPHTHALMOLOGICAL: 3,
+    UPDATE_FLAG_SHOW_BACKDROP: 4
 }
 
 function reducer(state, action) {
     switch (action.type) {
-        case actionTypes.ADD_CARD_LANG:
+        case actionTypes.SET_ID_TEST_OPHTHALMOLOGICAL:
+            return {
+                ...state,
+                idTest: action.payload
+            }
+        case actionTypes.UPDATE_FLAG_SHOW_BACKDROP:
+            return {
+                ...state,
+                showBackdrop: action.payload
+            }
+        case actionTypes.ADD_CARDS_LANG:
             return {
                 ...state,
                 cards: [
-                    ...state.cards,
                     action.payload
                 ]
             }
-        case actionTypes.UPDATE_TAB:
+        case actionTypes.ADD_RESULT_LANG:
             return {
                 ...state,
-                currentTap: action.payload
+                results: action.payload
             }
         default:
             return state

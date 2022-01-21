@@ -1,7 +1,7 @@
 import login from "./smartDataBackend/loginProvider";
 import { findAllOphthalmologicalTests, createOphthalmologicalTests } from "./smartDataBackend/Ophthalmological";
-import { savePatient } from "./smartDataBackend/patients";
-import { langFindAll } from './smartDataBackend/lang'
+import { savePatient, findAllPatients } from "./smartDataBackend/patients";
+import { langFindAll, langSaveResult } from './smartDataBackend/lang'
 import { ishiharaFindAll } from './smartDataBackend/ishihara'
 
 export const providers = {
@@ -12,7 +12,8 @@ export const providers = {
                 find_all: findAllOphthalmologicalTests,
                 create: createOphthalmologicalTests,
                 lang: {
-                    findAll: langFindAll
+                    findAll: langFindAll,
+                    saveResult: langSaveResult
                 },
                 ishihara: {
                     findAll: ishiharaFindAll
@@ -20,7 +21,8 @@ export const providers = {
             }
         },
         patients: {
-            save: savePatient
+            save: savePatient,
+            find_all: findAllPatients
         }
     }
 }

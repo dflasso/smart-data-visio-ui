@@ -11,15 +11,20 @@ import CardNavHorizontal from '../../../components/CardNavHorizontal'
 
 
 // Validations
-import { isNumber } from "../../../util/validations";
+import { isNumeric } from "../../../util/validations";
 
 export default function ContainerInfoPatient({ idTest }) {
-    const isIdValid = isNumber(idTest)
+    const isIdValid = isNumeric(idTest)
     const router = useRouter()
 
     const handleRegisterPatienti = () => {
-        router.push("/patient/register/300")
+        router.push("/patient/register/from_process_ophthalmological")
     }
+
+    const handleSearchPatient = () => {
+        router.push("/patient/search")
+    }
+
     return (
         <CardNavHorizontal
             iconAvatarHeader="account_box"
@@ -32,7 +37,7 @@ export default function ContainerInfoPatient({ idTest }) {
                 </Button>
                 </Grid>
                 <Grid item xs={11} md={3} lg={3} >
-                    <Button variant="outlined" fullWidth>
+                    <Button variant="outlined" fullWidth onClick={handleSearchPatient} >
                         Buscar Paciente
                 </Button>
                 </Grid>

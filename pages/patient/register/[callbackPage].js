@@ -2,7 +2,7 @@
 import React from 'react'
 // Next.js
 import { useRouter } from 'next/router'
-
+import Swal from 'sweetalert2'
 // Materal UI
 import { Backdrop, CircularProgress, Grid } from '@mui/material';
 
@@ -23,23 +23,29 @@ export default function RegisterPatientCallback() {
 
     const onSave = ({ data = {}, error = {}, is_successfull = true }) => {
         setOpen(true)
-        backend.medical_test.ophthalmological.create({ patient_id: data.id })
-            .then(
-                response => {
-                    router.push(`/process/eval-pilots/steps?id=${response.id}`).finally(() => setOpen(false))
-                }
-            ).catch(
-                error => {
-                    setOpen(false)
-                    console.log(error)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Ocurrio un error al asignarle un grupo pruebas oftalmologicas al paciente',
-                    })
-                }
-            )
+        if (data === null && error === null && !is_successfull) {
+            router.push(`/process/eval-pilots/steps`).finally(() => setOpen(false))
 
+        } else {
+
+            backend.medical_test.ophthalmological.create({ patient_id: data.id })
+                .then(
+                    response => {
+                        router.push(`/process/eval-pilots/steps?id=${response.id}`).finally(() => setOpen(false))
+                    }
+                ).catch(
+                    error => {
+                        setOpen(false)
+                        console.log(error)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Ocurrio un error al asignarle un grupo pruebas oftalmologicas al paciente',
+                        })
+                    }
+                )
+
+        }
     }
 
     return (

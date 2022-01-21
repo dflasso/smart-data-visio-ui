@@ -19,3 +19,20 @@ export function savePatient({ request }) {
             })
     })
 }
+
+export function findAllPatients() {
+    return new Promise((resolve, reject) => {
+        restClient.get(APIs.v1.patients.save)
+            .then(response => {
+                resolve(response.data)
+            }).catch(error => {
+                try {
+                    console.error(error.response.data)
+                } catch (exception) {
+                    console.error(exception)
+                }
+
+                reject(error)
+            })
+    })
+}

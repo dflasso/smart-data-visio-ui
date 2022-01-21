@@ -9,6 +9,9 @@ import CardNavHorizontal from '../../components/CardNavHorizontal'
 
 
 export default function ContainerTermsConditions() {
+    const handleDownloadTermsConditions = () => {
+        window.open("/terminos_condiciones.pdf", "_blank")
+    }
     return (
         <CardNavHorizontal
             iconAvatarHeader="info"
@@ -21,13 +24,14 @@ export default function ContainerTermsConditions() {
                     </FormGroup>
                 </Grid>
                 <Grid item xs={11} md={6} lg={3}>
-                    <Button variant="outlined" fullWidth>
+                    <Button variant="outlined" fullWidth onClick={handleDownloadTermsConditions}>
                         Descargar acta de consentimiento
                     </Button>
                 </Grid>
                 <Grid item xs={11} md={6} lg={3}>
-                    <Button variant="outlined" fullWidth >
+                    <Button variant="outlined" fullWidth component="label">
                         Subir archivo firmado
+                        <input type="file" hidden />
                     </Button>
                 </Grid>
             </Grid>

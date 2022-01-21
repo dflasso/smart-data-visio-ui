@@ -13,7 +13,8 @@ export default {
                 create: '/v1/tests/ophthalmological/',
                 classic_test: {
                     lang: {
-                        find_all: '/v1/visual-test/classic/lang/'
+                        find_all: '/v1/visual-test/classic/lang/',
+                        save_result: '/v1/visual-test/classic/lang/results/'
                     },
                     ishihara: {
                         find_all: '/v1/visual-test/classic/ishihara/'
@@ -22,7 +23,8 @@ export default {
             }
         },
         patients: {
-            save: '/v1/patients/'
+            save: '/v1/patients/',
+            get_all: '/v1/patients/'
         }
     }
 

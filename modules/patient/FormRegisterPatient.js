@@ -1,26 +1,81 @@
 // React js
 import React from 'react'
 // Material Ui
-import { Backdrop, Button, Card, CardContent, CircularProgress, Grid, OutlinedInput } from '@mui/material'
+import { Alert, Backdrop, Button, Card, CardContent, Checkbox, CircularProgress, FormControl, FormControlLabel, Grid, OutlinedInput, Radio, RadioGroup } from '@mui/material'
+// validations
+import { useFormik } from 'formik'
+import * as yup from 'yup'
+
 // Local Components
 import HeaderForms from '../../components/HeaderForms'
 import Subtitle from '../../components/Subtitle'
 import styles from "../../styles/FormRegisterPatient.module.scss";
-import useFormRegisterPatient, { typesInputs } from '../../hooks/useFormRegisterPatient';
+import useFormRegisterPatient from '../../hooks/useFormRegisterPatient';
+// validations
+import { validarCedula } from "../../util/validateDocuments";
+
+const validationSchema = yup.object({
+    email: yup
+        .string('Ingrese un correo electrónico')
+        .email('Ingrese un correo electrónico válido.')
+        .required('El correo electrónico es necesario.'),
+    doc_identification: yup
+        .string('Ingrese una cédula o pasaporte')
+        .required('Una cédula o un pasaporte es necesario.'),
+    first_name: yup
+        .string('Ingrese sus nombres')
+        .required('Sus nombres son necesarios'),
+    last_name: yup
+        .string('Ingrese su(s) apellido(s)')
+        .required('Sus apellidos son necesarios'),
+    phone: yup
+        .string('Ingrese su número celular.')
+        .min(10, 'El número celular debe tener al menos 10 dígitos.')
+        .max(13, 'El número celular no debe tener más de 13 dígitos.')
+        .required('Su número celular es necesario'),
+    birthday: yup
+        .date('Fecha de nacimiento')
+        .required('La fecha de nacimiento es necesaria')
+
+});
 
 export default function FormRegisterPatient({ onSave }) {
-
     const {
-        firstName,
-        lastName,
-        docIdentification,
-        birthday,
-        email,
-        phone,
-        handleChangeInput,
+        handleGoBack,
         handleSubmit,
         open
     } = useFormRegisterPatient({ onSave })
+
+    const formik = useFormik({
+        initialValues: {
+            selectedDocument: 'C',
+            email: '',
+            doc_identification: '',
+            first_name: '',
+            last_name: '',
+            phone: '',
+            birthday: '',
+        },
+        validationSchema: validationSchema,
+        validate: (values, props) => {
+            const errors = {};
+
+
+            if (values.selectedDocument === 'C') {
+                let validCI = validarCedula(values.doc_identification)
+                if (!validCI) {
+                    errors.doc_identification = 'Cédula Inválida.'
+                }
+            }
+
+            return errors;
+        },
+        onSubmit: (values) => {
+            handleSubmit(values)
+        },
+    });
+
+
 
     return (
         <Grid item xs={12} md={11} lg={6} container direction="row" justifyContent="center" alignItems="center" className={styles.content} >
@@ -32,107 +87,168 @@ export default function FormRegisterPatient({ onSave }) {
                     >
                         <CircularProgress color="inherit" />
                     </Backdrop>
-                    <form onSubmit={handleSubmit} >
+                    <form onSubmit={formik.handleSubmit}>
                         <Grid container direction="row" alignItems="start" justifyContent="start" spacing={2}>
                             <Grid item xs={12} md={12} >
                                 <HeaderForms title="Registro de Paciente" />
+                                <Alert severity="info">Los campos marcados con (<b style={{ color: '#FF0000' }} >*</b>) son obligatorios. </Alert>
                             </Grid>
                             <Grid item xs={12} md={12} lg={12} alignItems="start" justifyContent="start" container spacing={1} >
-
                                 <Grid item xs={12} md={12} >
                                     <Subtitle title="Datos Básicos" icon="person_pin" />
                                 </Grid>
                                 <Grid item xs={12} md={4} lg={3}  >
-                                    <label>Nombres: </label>
+                                    <label>Nombres: <b style={{ color: '#FF0000' }} >*</b> </label>
                                 </Grid>
                                 <Grid item xs={12} md={8} lg={9} >
                                     <OutlinedInput
-                                        size="small"
-                                        value={firstName}
                                         fullWidth
-                                        variant="outlined"
-                                        onChange={handleChangeInput(typesInputs.firstName)}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={4} lg={3} >
-                                    <label>Apellidos: </label>
-                                </Grid>
-                                <Grid item xs={12} md={8} lg={9} >
-                                    <OutlinedInput
+                                        id="first_name"
+                                        name="first_name"
                                         size="small"
-                                        fullWidth
-                                        value={lastName}
-                                        variant="outlined"
-                                        onChange={handleChangeInput(typesInputs.lastName)}
+                                        value={formik.values.first_name}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.first_name && Boolean(formik.errors.first_name)}
                                     />
-                                </Grid>
-                                <Grid item xs={12} md={4} lg={3} >
-                                    <label>Cédula/Pasaporte: </label>
-                                </Grid>
-                                <Grid item xs={12} md={8} lg={9} >
-                                    <OutlinedInput
-                                        size="small"
-                                        fullWidth
-                                        value={docIdentification}
-                                        variant="outlined"
-                                        onChange={handleChangeInput(typesInputs.docIdentification)}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={4} lg={3} >
-                                    <label>Fecha Nacimiento: </label>
-                                </Grid>
-                                <Grid item xs={12} md={8} lg={9} >
-                                    <OutlinedInput
-                                        size="small"
-                                        fullWidth
-                                        value={birthday}
-                                        variant="outlined"
-                                        type="date"
-                                        onChange={handleChangeInput(typesInputs.birthday)}
-                                    />
+                                    {formik.touched.first_name && (<small style={{ color: '#FF0000' }}  > {formik.errors.first_name} </small>)}
                                 </Grid>
                             </Grid>
+                            <Grid item xs={12} md={4} lg={3} >
+                                <label>Apellidos: <b style={{ color: '#FF0000' }} >*</b> </label>
+                            </Grid>
+                            <Grid item xs={12} md={8} lg={9} >
+                                <OutlinedInput
+                                    fullWidth
+                                    id="last_name"
+                                    name="last_name"
+                                    size="small"
+                                    value={formik.values.last_name}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.last_name && Boolean(formik.errors.last_name)}
+                                />
+                                {formik.touched.last_name && (<small style={{ color: '#FF0000' }}  > {formik.errors.last_name} </small>)}
+                            </Grid>
+
+                            <Grid item xs={12} md={4} lg={3} >
+                                <label>Cédula/Pasaporte: <b style={{ color: '#FF0000' }} >*</b> </label>
+                            </Grid>
+                            <Grid item xs={12} md={4} lg={5} >
+                                <OutlinedInput
+                                    fullWidth
+                                    id="doc_identification"
+                                    name="doc_identification"
+                                    size="small"
+                                    value={formik.values.doc_identification}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.doc_identification && Boolean(formik.errors.doc_identification)}
+                                />
+                                {formik.touched.doc_identification && (<small style={{ color: '#FF0000' }}  > {formik.errors.doc_identification} </small>)}
+                            </Grid>
+                            <Grid item xs={12} md={4} lg={4} >
+                                <FormControl>
+                                    <RadioGroup row >
+                                        <FormControlLabel value="C" control={<Radio checked={formik.values.selectedDocument === 'C'} onChange={formik.handleChange} name="selectedDocument" />} label="Cédula" />
+                                        <FormControlLabel value="P" control={<Radio checked={formik.values.selectedDocument === 'P'} onChange={formik.handleChange} name="selectedDocument" />} label="Pasaporte" />
+                                    </RadioGroup>
+
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} md={4} lg={3} >
+                                <label>Fecha Nacimiento: <b style={{ color: '#FF0000' }} >*</b> </label>
+                            </Grid>
+                            <Grid item xs={12} md={8} lg={9} >
+                                <OutlinedInput
+                                    fullWidth
+                                    id="birthday"
+                                    name="birthday"
+                                    size="small"
+                                    value={formik.values.birthday}
+                                    onChange={formik.handleChange}
+                                    type="date"
+                                    error={formik.touched.birthday && Boolean(formik.errors.birthday)}
+                                />
+                                {formik.touched.birthday && (<small style={{ color: '#FF0000' }}  > {formik.errors.birthday} </small>)}
+                            </Grid>
+
                             <Grid item xs={12} md={12} lg={12} alignItems="start" justifyContent="start" container spacing={1}>
                                 <Grid item xs={12} md={12} >
                                     <Subtitle title="Contactos" icon="contact_phone" />
                                 </Grid>
 
                                 <Grid item xs={12} md={4} lg={3}  >
-                                    <label>Correo: </label>
+                                    <label>Correo: <b style={{ color: '#FF0000' }} >*</b> </label>
+                                </Grid>
+                                <Grid item xs={12} md={8} lg={9} >
+                                    <OutlinedInput
+                                        fullWidth
+                                        id="email"
+                                        name="email"
+                                        size="small"
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.email && Boolean(formik.errors.email)}
+                                        type="email"
+                                    />
+                                    {formik.touched.email && (<small style={{ color: '#FF0000' }}  > {formik.errors.email} </small>)}
+                                </Grid>
+
+                                <Grid item xs={12} md={4} lg={3}  >
+                                    <label>Teléfono celular:  <b style={{ color: '#FF0000' }} >*</b></label>
+                                </Grid>
+                                <Grid item xs={12} md={8} lg={9} >
+                                    <OutlinedInput
+                                        fullWidth
+                                        id="phone"
+                                        name="phone"
+                                        size="small"
+                                        value={formik.values.phone}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.phone && Boolean(formik.errors.phone)}
+                                    />
+                                    {formik.touched.phone && (<small style={{ color: '#FF0000' }}  > {formik.errors.phone} </small>)}
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={12} md={12} lg={12} alignItems="start" justifyContent="start" container spacing={1}>
+                                <Grid item xs={12} md={12} >
+                                    <Subtitle title="Historial Médico" icon="health_and_safety" />
+                                </Grid>
+
+                                <Grid item xs={12} md={4} lg={3}  >
+                                    <label>Enfermedades conocidas: </label>
                                 </Grid>
                                 <Grid item xs={12} md={8} lg={9} >
                                     <OutlinedInput
                                         size="small"
                                         fullWidth
-                                        value={email}
                                         variant="outlined"
-                                        type="email"
-                                        onChange={handleChangeInput(typesInputs.email)}
                                     />
                                 </Grid>
 
                                 <Grid item xs={12} md={4} lg={3}  >
-                                    <label>Teléfono celular: </label>
+                                    <label>¿usa lentes?: </label>
                                 </Grid>
                                 <Grid item xs={12} md={8} lg={9} >
-                                    <OutlinedInput
-                                        size="small"
-                                        fullWidth
-                                        value={phone}
-                                        variant="outlined"
-                                        onChange={handleChangeInput(typesInputs.phone)}
-                                    />
+                                    <Checkbox />
                                 </Grid>
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12} container justifyContent="center" alignItems="center"  >
-                                <Button type="submit" variant="contained"   >Registrar</Button>
+                                <Grid item xs={3}>
+                                    <Button color="primary" variant="contained" type="submit">
+                                        Guardar
+                                </Button>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Button color="error" variant="contained" onClick={handleGoBack}>
+                                        Regresar
+                                </Button>
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </form>
 
+                    </form>
                 </CardContent>
             </Card>
-        </Grid>
+        </Grid >
     )
 }

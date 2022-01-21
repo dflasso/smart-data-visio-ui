@@ -5,7 +5,6 @@ import RegisterOphthalmologicalTests from "../../../modules/process/register_oph
 import styles from "../../../styles/Page.module.scss";
 
 export default function EvalPilots({ idTest }) {
-
     return (
         <PrivateLayout titlePage="Ophthalmological tests">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} spacing={2} >
@@ -17,9 +16,11 @@ export default function EvalPilots({ idTest }) {
 
 
 export async function getServerSideProps(context) {
-    let idTest = '0'
-    if (typeof context.query !== "undefined" && typeof context.query !== "object") {
+    let idTest = ''
+
+    if (typeof context.query !== "undefined" && typeof context.query === "object") {
         if (typeof context.query.id !== "undefined" && context.query.id !== null) {
+
             idTest = context.query.id
         }
     }
