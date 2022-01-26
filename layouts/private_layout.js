@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import HeaderPrivatePage from '../components/HeaderPrivatePage';
+import Loader from '../components/Loader';
 import Menu from "../components/Menu";
 import { LayoutProvider } from "../contexts/LayoutContext";
 import styles from '../styles/PrivateLayout.module.scss'
@@ -18,6 +19,7 @@ export default function PrivateLayout({ children, titlePage = "", titleTab = "",
                 <HeaderPrivatePage title={titlePage} />
                 <Menu />
                 <main className={styles.mainContent}>
+                    <Loader />
                     {children}
                 </main>
                 <footer className={styles.footerContent} >{msgFooter}</footer>

@@ -17,13 +17,16 @@ export default {
                         save_result: '/v1/visual-test/classic/lang/results/'
                     },
                     ishihara: {
-                        find_all: '/v1/visual-test/classic/ishihara/'
+                        find_all: '/v1/visual-test/classic/ishihara/',
+                        save_result: '/v1/visual-test/classic/ishihara/results/'
                     }
                 }
             }
         },
         patients: {
             save: '/v1/patients/',
+            update: ({ id_patient = "" }) => `/v1/patients/${id_patient}/`,
+            find_by_num_document: ({ num_document = "" }) => `/v1/patients/${num_document}/find_by_num_document`,
             get_all: '/v1/patients/'
         }
     }

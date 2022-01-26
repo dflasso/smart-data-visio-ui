@@ -1,8 +1,8 @@
 import login from "./smartDataBackend/loginProvider";
 import { findAllOphthalmologicalTests, createOphthalmologicalTests } from "./smartDataBackend/Ophthalmological";
-import { savePatient, findAllPatients } from "./smartDataBackend/patients";
+import { savePatient, findAllPatients, findByNumDocument, updatePatient } from "./smartDataBackend/patients";
 import { langFindAll, langSaveResult } from './smartDataBackend/lang'
-import { ishiharaFindAll } from './smartDataBackend/ishihara'
+import { ishiharaFindAll, ishiharaSaveResult } from './smartDataBackend/ishihara'
 
 export const providers = {
     backend: {
@@ -16,13 +16,16 @@ export const providers = {
                     saveResult: langSaveResult
                 },
                 ishihara: {
-                    findAll: ishiharaFindAll
+                    findAll: ishiharaFindAll,
+                    saveResult: ishiharaSaveResult
                 }
             }
         },
         patients: {
             save: savePatient,
-            find_all: findAllPatients
+            update: updatePatient,
+            find_all: findAllPatients,
+            find_by_num_document: findByNumDocument
         }
     }
 }

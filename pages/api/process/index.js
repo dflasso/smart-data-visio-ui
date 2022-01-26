@@ -3,7 +3,7 @@ const processDefault = [
         id: "1",
         name: "Pruebas oftalmológicas",
         description: "Pruebas visuales",
-        imageUrl: "img/Pruebas_Oftalmologicas.png",
+        imageUrl: "img/Smart_Data_Visio_home_logo.png",
         url: "/process/eval-pilots"
     }
 ]

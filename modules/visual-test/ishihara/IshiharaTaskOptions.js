@@ -1,4 +1,5 @@
-import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, FormGroup, Grid, Slide, TextField } from '@mui/material'
+import { PlayCircle } from '@mui/icons-material';
+import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, FormGroup, Grid, IconButton, Slide, TextField } from '@mui/material'
 import React from 'react'
 import LabelText from '../../../components/LabelText';
 import UnknowOption from '../../../components/UnknowOption';
@@ -14,54 +15,70 @@ const Transition = React.forwardRef(function Transition(props, ref) {
  * @param {*} param0 
  * @returns 
  */
-export default function LangTaskOptions({ optionsKnow = [], onSave, idTask = "", descriptionTask = "", purpose = "" }) {
+export default function IshiharaTaskOptions({ optionsKnow = [], onSave, idTask = "", descriptionTask = "", typeBtn = "normal", BtnText = "Ejecutar Prueba" }) {
     const { open,
-        unknowOptions,
         handleClickOpen,
         handleClose,
         handleClickAddUnknowOption,
         handleClickDeleteUnknowOption,
-        handleSave } = useLangTaskOptions(onSave, idTask, descriptionTask)
+        handleChangeCheckBox,
+        handleChangeObservations,
+        observations,
+        handleSave } = useLangTaskOptions(onSave, idTask, descriptionTask, optionsKnow)
 
+    const resolveTypeBtn = () => {
+        if (typeBtn === "normal") {
+            return (
+                <Button variant="outlined" onClick={handleClickOpen} size="small" startIcon={<PlayCircle />} color="success">
+                    {BtnText}
+                </Button>
+            )
+        } else if (typeBtn === "normalContainedFull") {
+            return (
+                <Button variant="contained" onClick={handleClickOpen} startIcon={<PlayCircle />} >
+                    {BtnText}
+                </Button>
+            )
+        } else {
+            return (<IconButton color="success" component="span" onClick={handleClickOpen}>
+                <PlayCircle />
+            </IconButton>)
+        }
+    }
 
     if (!open) {
-        return (
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Ejecutar Prueba
-            </Button>
-        )
+        return resolveTypeBtn()
     }
 
     return (
         <>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Ejecutar Prueba
-            </Button>
+            {resolveTypeBtn()}
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
                 keepMounted
                 fullWidth
-                maxWidth="md"
+                maxWidth="sm"
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle> {descriptionTask} </DialogTitle>
+                <DialogTitle> {descriptionTask} <br /> <small> Ingrese los números o formas que visualiza el usuario. </small> </DialogTitle>
                 <DialogContent dividers>
                     <FormGroup>
                         {
                             optionsKnow.map(op => (
                                 <Grid container>
-                                    <Grid item xs={6}>
-                                        <FormControlLabel control={<Checkbox />} label={`${op.description_spanish} (${op.weighing})`} />
+                                    <Grid item xs={3}>
+                                        <FormControlLabel control={<Checkbox onChange={handleChangeCheckBox(op.item_id)} />} label={`${op.description_spanish}`} />
                                     </Grid>
-                                    <Grid item xs={6}>
-                                        <LabelText>Otro Objeto identificado:  </LabelText>
+                                    <Grid item xs={9}>
+                                        <LabelText>Otro Número o forma identificada:  </LabelText>
 
 
                                         <UnknowOption
                                             handlAddOption={handleClickAddUnknowOption}
                                             handleDeleteOption={handleClickDeleteUnknowOption}
+                                            id_reference={op.item_id}
                                         />
 
 
@@ -77,7 +94,9 @@ export default function LangTaskOptions({ optionsKnow = [], onSave, idTask = "",
                         variant="outlined"
                         type='text'
                         fullWidth
+                        value={observations}
                         size="small"
+                        onChange={handleChangeObservations}
                     />
                 </DialogContent>
                 <DialogActions>

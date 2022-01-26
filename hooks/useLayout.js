@@ -23,10 +23,19 @@ export default function useLayout() {
         })
     }
 
+    const updateFlagShowBackdrop = ({ show = false }) => {
+        dispatch({
+            type: actionTypes.UPDATE_FLAG_SHOW_BACKDROP,
+            payload: show
+        })
+    }
+
     return {
         state,
+        openBackdrop: state.openBackdrop,
         handleDrawerOpen,
         handleDrawerClose,
-        setTitle
+        setTitle,
+        updateFlagShowBackdrop
     }
 }

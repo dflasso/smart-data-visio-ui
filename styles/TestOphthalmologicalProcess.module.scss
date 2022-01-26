@@ -1,0 +1,57 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.cardTestOphthalmologicalProcess {
+    margin: 10px;
+}
+
+.cardTestListTestOphthalmologicalProcess {
+    padding-right: 5px;
+    border-color: $color-primary-dark;
+    border-width: 0px 1px 0px 0px;
+    border-style: solid;
+}
+
+
+.cardLangHeader {
+    background-color: $color-primary-light;
+    color: $color-primary-dark;
+    text-align: center;
+    font-size: small;
+    padding: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-primary-dark;
+    border-radius: 2px;
+}
+
+.cardLang {
+    background-color: $color-gris-light;
+}
+
+.HeaderListTest {
+    color: $color-primary-dark;
+    font-size: small;
+    font-weight: 700;
+    line-height: 32px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-primary-dark;
+    border-radius: 7px;   
+}
+
+.ListTestItem {
+    background-color: $color-primary-light;
+    padding-top: 5px;
+    margin-top: 2px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+    color: $color-primary-dark;
+    font-weight: 700;
+}
+
+.ListTestItem span { 
+    color: $color-primary-dark;
+    font-weight: 700;
+}

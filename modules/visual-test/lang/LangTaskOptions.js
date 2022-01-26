@@ -15,7 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
  * @param {*} param0 
  * @returns 
  */
-export default function LangTaskOptions({ optionsKnow = [], onSave, idTask = "", descriptionTask = "", purpose = "", typeBtn = "normal" }) {
+export default function LangTaskOptions({ optionsKnow = [], onSave, idTask = "", descriptionTask = "", purpose = "", typeBtn = "normal", BtnText = "Ejecutar Prueba" }) {
     const { open,
         handleClickOpen,
         handleClose,
@@ -30,7 +30,19 @@ export default function LangTaskOptions({ optionsKnow = [], onSave, idTask = "",
         if (typeBtn === "normal") {
             return (
                 <Button variant="outlined" onClick={handleClickOpen} size="small" startIcon={<PlayCircle />} color="success">
-                    Ejecutar Prueba
+                    {BtnText}
+                </Button>
+            )
+        } else if (typeBtn === "normalContained") {
+            return (
+                <Button variant="contained" onClick={handleClickOpen} startIcon={<PlayCircle />} >
+                    {BtnText}
+                </Button>
+            )
+        } else if (typeBtn === "normalContainedFullWidth") {
+            return (
+                <Button variant="contained" fullWidth onClick={handleClickOpen} startIcon={<PlayCircle />} >
+                    {BtnText}
                 </Button>
             )
         } else {

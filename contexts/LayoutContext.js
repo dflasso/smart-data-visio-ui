@@ -2,7 +2,8 @@ import React, { useReducer } from 'react'
 
 const initData = {
     headerTitle: "",
-    openMenu: false
+    openMenu: false,
+    openBackdrop: false
 }
 
 const context = React.createContext(initData)
@@ -10,7 +11,8 @@ const context = React.createContext(initData)
 export const actionTypes = {
     HEADER_TITLE_UPDATE: 1,
     MENU_OPEN: 2,
-    MENU_CLOSE: 3
+    MENU_CLOSE: 3,
+    UPDATE_FLAG_SHOW_BACKDROP: 4
 }
 
 function reducer(state, action) {
@@ -31,6 +33,12 @@ function reducer(state, action) {
             return {
                 ...state,
                 openMenu: false,
+
+            }
+        case actionTypes.UPDATE_FLAG_SHOW_BACKDROP:
+            return {
+                ...state,
+                openBackdrop: action.payload,
 
             }
         default:

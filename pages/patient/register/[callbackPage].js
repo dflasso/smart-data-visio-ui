@@ -22,28 +22,45 @@ export default function RegisterPatientCallback() {
     const [open, setOpen] = React.useState(false);
 
     const onSave = ({ data = {}, error = {}, is_successfull = true }) => {
-        setOpen(true)
+
         if (data === null && error === null && !is_successfull) {
-            router.push(`/process/eval-pilots/steps`).finally(() => setOpen(false))
+            setOpen(true)
+            router.push(`/process/eval-pilots`).finally(() => setOpen(false))
 
         } else {
 
-            backend.medical_test.ophthalmological.create({ patient_id: data.id })
-                .then(
-                    response => {
-                        router.push(`/process/eval-pilots/steps?id=${response.id}`).finally(() => setOpen(false))
-                    }
-                ).catch(
-                    error => {
-                        setOpen(false)
-                        console.log(error)
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Ocurrio un error al asignarle un grupo pruebas oftalmologicas al paciente',
-                        })
-                    }
-                )
+            Swal.fire({
+                icon: "question",
+                title: '¿Desea iniciar las pruebas?',
+                showCancelButton: true,
+                confirmButtonText: 'Iniciar',
+                cancelButtonText: 'Regresar'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    backend.medical_test.ophthalmological.create({ patient_id: data.id })
+                        .then(
+                            response => {
+                                setOpen(true)
+                                router.push(`/process/eval-pilots/steps?id=${response.id}&patient_id=${data.doc_identification}`).finally(() => setOpen(false))
+                            }
+                        ).catch(
+                            error => {
+                                console.log(error)
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'Ocurrio un error al asignarle un grupo pruebas oftalmologicas al paciente',
+                                })
+                            }
+                        )
+                } else if (result.isDismissed) {
+                    setOpen(true)
+                    router.push(`/process/eval-pilots`).finally(() => setOpen(false))
+                }
+            })
+
+
 
         }
     }

@@ -1,7 +1,10 @@
 // React js
 import React from 'react'
 // Material Ui
-import { Alert, Backdrop, Button, Card, CardContent, Checkbox, CircularProgress, FormControl, FormControlLabel, Grid, OutlinedInput, Radio, RadioGroup } from '@mui/material'
+import {
+    Alert, Backdrop, Button, Card, CardContent, Checkbox, CircularProgress,
+    FormControl, FormControlLabel, Grid, OutlinedInput, Radio, RadioGroup
+} from '@mui/material'
 // validations
 import { useFormik } from 'formik'
 import * as yup from 'yup'
@@ -9,10 +12,14 @@ import * as yup from 'yup'
 // Local Components
 import HeaderForms from '../../components/HeaderForms'
 import Subtitle from '../../components/Subtitle'
+import AutocompleteOrCreate from '../../components/AutocompleteOrCreate'
 import styles from "../../styles/FormRegisterPatient.module.scss";
-import useFormRegisterPatient from '../../hooks/useFormRegisterPatient';
+import useFormRegisterPatient, { initForm } from '../../hooks/useFormRegisterPatient';
 // validations
 import { validarCedula } from "../../util/validateDocuments";
+//Constans
+import { buildOptionsToAutocomplete, professions, forces } from '../../constants/professions'
+import Languages from '../../constants/Languages'
 
 const validationSchema = yup.object({
     email: yup
@@ -31,43 +38,39 @@ const validationSchema = yup.object({
     phone: yup
         .string('Ingrese su número celular.')
         .min(10, 'El número celular debe tener al menos 10 dígitos.')
-        .max(13, 'El número celular no debe tener más de 13 dígitos.')
-        .required('Su número celular es necesario'),
+        .max(13, 'El número celular no debe tener más de 13 dígitos.'),
     birthday: yup
         .date('Fecha de nacimiento')
-        .required('La fecha de nacimiento es necesaria')
-
+        .required('La fecha de nacimiento es necesaria'),
+    diseases: yup
+        .string('Ingrese enfermedades conocidas.'),
 });
 
-export default function FormRegisterPatient({ onSave }) {
+export default function FormRegisterPatient({ onSave, initialValues = initForm, recoveryPatient = false }) {
     const {
         handleGoBack,
         handleSubmit,
-        open
-    } = useFormRegisterPatient({ onSave })
+        optionalData,
+        handleOnChangeOptionalData,
+        showForces,
+        showRanksMilitaries,
+        tryLoadRanksMilitaries,
+        open,
+        handleOnBlur,
+        existPatient
+    } = useFormRegisterPatient({ onSave, recoveryPatient })
 
     const formik = useFormik({
-        initialValues: {
-            selectedDocument: 'C',
-            email: '',
-            doc_identification: '',
-            first_name: '',
-            last_name: '',
-            phone: '',
-            birthday: '',
-        },
+        initialValues: initialValues,
         validationSchema: validationSchema,
         validate: (values, props) => {
             const errors = {};
-
-
             if (values.selectedDocument === 'C') {
                 let validCI = validarCedula(values.doc_identification)
                 if (!validCI) {
                     errors.doc_identification = 'Cédula Inválida.'
                 }
             }
-
             return errors;
         },
         onSubmit: (values) => {
@@ -75,6 +78,9 @@ export default function FormRegisterPatient({ onSave }) {
         },
     });
 
+    const ltsProfesions = buildOptionsToAutocomplete({ ltsOptions: professions, language: Languages.spanish })
+    const ltsForces = buildOptionsToAutocomplete({ ltsOptions: forces, language: Languages.spanish })
+    const ltsranksMilitaries = tryLoadRanksMilitaries()
 
 
     return (
@@ -96,6 +102,33 @@ export default function FormRegisterPatient({ onSave }) {
                             <Grid item xs={12} md={12} lg={12} alignItems="start" justifyContent="start" container spacing={1} >
                                 <Grid item xs={12} md={12} >
                                     <Subtitle title="Datos Básicos" icon="person_pin" />
+                                </Grid>
+
+                                <Grid item xs={12} md={4} lg={3} >
+                                    <label>Cédula/Pasaporte: <b style={{ color: '#FF0000' }} >*</b> </label>
+                                </Grid>
+                                <Grid item xs={12} md={4} lg={5} >
+                                    <OutlinedInput
+                                        fullWidth
+                                        id="doc_identification"
+                                        name="doc_identification"
+                                        size="small"
+                                        value={formik.values.doc_identification}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.doc_identification && Boolean(formik.errors.doc_identification)}
+                                        onBlur={handleOnBlur(formik.values.doc_identification, formik)}
+                                    />
+                                    {formik.touched.doc_identification && (<small style={{ color: '#FF0000' }}  > {formik.errors.doc_identification} </small>)}
+                                </Grid>
+
+                                <Grid item xs={12} md={4} lg={4} >
+                                    <FormControl>
+                                        <RadioGroup row >
+                                            <FormControlLabel value="C" control={<Radio checked={formik.values.selectedDocument === 'C'} onChange={formik.handleChange} name="selectedDocument" />} label="Cédula" />
+                                            <FormControlLabel value="P" control={<Radio checked={formik.values.selectedDocument === 'P'} onChange={formik.handleChange} name="selectedDocument" />} label="Pasaporte" />
+                                        </RadioGroup>
+
+                                    </FormControl>
                                 </Grid>
                                 <Grid item xs={12} md={4} lg={3}  >
                                     <label>Nombres: <b style={{ color: '#FF0000' }} >*</b> </label>
@@ -130,30 +163,6 @@ export default function FormRegisterPatient({ onSave }) {
                             </Grid>
 
                             <Grid item xs={12} md={4} lg={3} >
-                                <label>Cédula/Pasaporte: <b style={{ color: '#FF0000' }} >*</b> </label>
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={5} >
-                                <OutlinedInput
-                                    fullWidth
-                                    id="doc_identification"
-                                    name="doc_identification"
-                                    size="small"
-                                    value={formik.values.doc_identification}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.doc_identification && Boolean(formik.errors.doc_identification)}
-                                />
-                                {formik.touched.doc_identification && (<small style={{ color: '#FF0000' }}  > {formik.errors.doc_identification} </small>)}
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={4} >
-                                <FormControl>
-                                    <RadioGroup row >
-                                        <FormControlLabel value="C" control={<Radio checked={formik.values.selectedDocument === 'C'} onChange={formik.handleChange} name="selectedDocument" />} label="Cédula" />
-                                        <FormControlLabel value="P" control={<Radio checked={formik.values.selectedDocument === 'P'} onChange={formik.handleChange} name="selectedDocument" />} label="Pasaporte" />
-                                    </RadioGroup>
-
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={3} >
                                 <label>Fecha Nacimiento: <b style={{ color: '#FF0000' }} >*</b> </label>
                             </Grid>
                             <Grid item xs={12} md={8} lg={9} >
@@ -176,7 +185,7 @@ export default function FormRegisterPatient({ onSave }) {
                                 </Grid>
 
                                 <Grid item xs={12} md={4} lg={3}  >
-                                    <label>Correo: <b style={{ color: '#FF0000' }} >*</b> </label>
+                                    <label>Correo:  <b style={{ color: '#FF0000' }} >*</b> </label>
                                 </Grid>
                                 <Grid item xs={12} md={8} lg={9} >
                                     <OutlinedInput
@@ -193,7 +202,7 @@ export default function FormRegisterPatient({ onSave }) {
                                 </Grid>
 
                                 <Grid item xs={12} md={4} lg={3}  >
-                                    <label>Teléfono celular:  <b style={{ color: '#FF0000' }} >*</b></label>
+                                    <label>Teléfono celular: </label>
                                 </Grid>
                                 <Grid item xs={12} md={8} lg={9} >
                                     <OutlinedInput
@@ -218,25 +227,93 @@ export default function FormRegisterPatient({ onSave }) {
                                 </Grid>
                                 <Grid item xs={12} md={8} lg={9} >
                                     <OutlinedInput
-                                        size="small"
                                         fullWidth
-                                        variant="outlined"
+                                        id="diseases"
+                                        name="diseases"
+                                        size="small"
+                                        value={formik.values.diseases}
+                                        onChange={formik.handleChange}
+                                        error={formik.touched.diseases && Boolean(formik.errors.diseases)}
                                     />
+                                    {formik.touched.diseases && (<small style={{ color: '#FF0000' }}  > {formik.errors.diseases} </small>)}
                                 </Grid>
 
                                 <Grid item xs={12} md={4} lg={3}  >
                                     <label>¿usa lentes?: </label>
                                 </Grid>
                                 <Grid item xs={12} md={8} lg={9} >
-                                    <Checkbox />
+                                    <Checkbox
+                                        checked={optionalData.useEyeglasses === 'S'}
+                                        onChange={handleOnChangeOptionalData('useEyeglasses')}
+                                    />
                                 </Grid>
+                            </Grid>
+
+                            <Grid item xs={12} md={12} lg={12} alignItems="start" justifyContent="start" container spacing={1}>
+                                <Grid item xs={12} md={12} >
+                                    <Subtitle title="Información Laboral" icon="work" />
+                                </Grid>
+
+                                <Grid item xs={12} md={4} lg={3}  >
+                                    <label>Profesión:  </label>
+                                </Grid>
+                                <Grid item xs={12} md={8} lg={9} >
+                                    <AutocompleteOrCreate
+                                        label="Seleccione una profesión"
+                                        ltsOptions={ltsProfesions}
+                                        onChange={handleOnChangeOptionalData('profesion')}
+                                    />
+                                </Grid>
+                                {
+                                    (showForces()) &&
+                                    (
+                                        <>
+                                            <Grid item xs={12} md={4} lg={3}  >
+                                                <label>Fuerza: </label>
+                                            </Grid>
+                                            <Grid item xs={12} md={8} lg={9} >
+                                                <AutocompleteOrCreate
+                                                    label="Seleccione una opción"
+                                                    ltsOptions={ltsForces}
+                                                    onChange={handleOnChangeOptionalData('force')}
+                                                />
+                                            </Grid>
+
+                                        </>
+                                    )
+                                }
+                                {
+                                    showRanksMilitaries() &&
+                                    (
+                                        <>
+                                            <Grid item xs={12} md={4} lg={3}  >
+                                                <label>Rango: </label>
+                                            </Grid>
+                                            <Grid item xs={12} md={8} lg={9} >
+                                                <AutocompleteOrCreate
+                                                    label="Seleccione una opción"
+                                                    ltsOptions={ltsranksMilitaries}
+                                                    onChange={handleOnChangeOptionalData('grade')}
+                                                />
+                                            </Grid>
+                                        </>
+                                    )
+                                }
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12} container justifyContent="center" alignItems="center"  >
                                 <Grid item xs={3}>
-                                    <Button color="primary" variant="contained" type="submit">
-                                        Guardar
-                                </Button>
+                                    {
+                                        !existPatient && (<Button color="primary" variant="contained" type="submit">
+                                            Guardar
+                                        </Button>)
+                                    }
+                                    {
+                                        existPatient && (<Button color="primary" variant="contained" type="submit">
+                                            Actualizar
+                                        </Button>)
+                                    }
+
                                 </Grid>
                                 <Grid item xs={3}>
                                     <Button color="error" variant="contained" onClick={handleGoBack}>
