@@ -3,12 +3,12 @@ import React from 'react'
 import CardNavHorizontal from '../../../components/CardNavHorizontal'
 
 // Validations
-import { isNumber } from "../../../util/validations";
+import { isNumeric } from "../../../util/validations";
 
 import { useRouter } from 'next/router'
 
 export default function ContaienerClassicTest({ idTest }) {
-    const isIdValid = isNumber(idTest)
+    const isIdValid = isNumeric(idTest)
 
     const router = useRouter()
 

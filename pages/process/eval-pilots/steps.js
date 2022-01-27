@@ -4,12 +4,11 @@ import PrivateLayout from '../../../layouts/private_layout'
 import RegisterOphthalmologicalTests from "../../../modules/process/register_ophthalmological_tests"
 import styles from "../../../styles/Page.module.scss";
 
-export default function EvalPilots({ idTest }) {
-
+export default function EvalPilots({ idTest, patientNumDocument }) {
     return (
-        <PrivateLayout titlePage="Ophthalmological tests">
+        <PrivateLayout titlePage="Pruebas oftalmológicas">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} spacing={2} >
-                <RegisterOphthalmologicalTests idTest={idTest} />
+                <RegisterOphthalmologicalTests idTest={idTest} patientNumDocument={patientNumDocument} />
             </Grid>
         </PrivateLayout>
     )
@@ -17,15 +16,20 @@ export default function EvalPilots({ idTest }) {
 
 
 export async function getServerSideProps(context) {
-    let idTest = '0'
-    if (typeof context.query !== "undefined" && typeof context.query !== "object") {
+    let idTest = ''
+    let patientNumDocument = ''
+    if (typeof context.query !== "undefined" && typeof context.query === "object") {
         if (typeof context.query.id !== "undefined" && context.query.id !== null) {
             idTest = context.query.id
+        }
+        if (typeof context.query.patient_id !== "undefined" && context.query.patient_id !== null) {
+            patientNumDocument = context.query.patient_id
         }
     }
     return {
         props: {
-            idTest
+            idTest,
+            patientNumDocument
         }, // will be passed to the page component as props
     }
 }

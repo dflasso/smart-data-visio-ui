@@ -1,0 +1,62 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.stepCardLetterRow {
+    text-align: center;
+    vertical-align: middle;
+    background-color: #e5f6fd;
+    border-color: #002f6c;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    color: #002f6c;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+    padding-right: 8px;
+    font-size: 24px;
+}
+
+.stepCardAnimalRowSelected {
+    text-align: center;
+    vertical-align: middle;
+    background-color: #e5f6fd;
+    border-color: #002f6c;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    color: #002f6c;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+    padding-right: 8px;
+    font-size: 24px;
+}
+
+.stepCardAnimalRow {
+    text-align: center;
+    vertical-align: middle;
+    border-color: #002f6c;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    color: #002f6c;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+    padding-right: 8px;
+    font-size: 24px;
+}
+
+
+.stepCardAnimalRowDetail {
+    text-align: center;
+    font-size: 24px;
+}

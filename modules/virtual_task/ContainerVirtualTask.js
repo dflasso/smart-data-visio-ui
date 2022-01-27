@@ -16,15 +16,16 @@ export default function ContainerVirtualTask() {
         >
             <Grid container direction="row" spacing={4}>
                 <Grid item xs={11} md={6} lg={3}>
-                    <Button variant="outlined" fullWidth>
+                    <Button variant="outlined" fullWidth component="label">
                         Subir archivo con los resultados
+                        <input type="file" hidden />
                     </Button>
                 </Grid>
-                <Grid item xs={11} md={6} lg={3}>
+                {/* <Grid item xs={11} md={6} lg={3}>
                     <Button variant="outlined" fullWidth >
                         Verificar Información Cargada
                     </Button>
-                </Grid>
+                </Grid> */}
             </Grid>
         </CardNavHorizontal>
     )

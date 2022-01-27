@@ -1,0 +1,27 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+.containerStep {
+    background-color: $color-primary-light;
+    padding: 15px;
+    border-radius: 8px;
+    border-color: $color-primary-dark;
+    border-width: 1px;
+}
+
+
+.containerStepHeader {
+    vertical-align: middle;
+    display: flex;
+    text-align: left;
+    justify-content: flex-start;
+    border-bottom: solid 1px $color-primary-dark;
+}
+
+.containerStepHeader svg {
+    margin-right: 10px;
+    justify-content: center;
+    align-self: center;
+    font-size: 20px;
+}

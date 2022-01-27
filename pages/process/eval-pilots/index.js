@@ -16,7 +16,7 @@ const backend = providers.backend
 
 export default function Process({ usersWithTestsOphthalmological }) {
     return (
-        <PrivateLayout titlePage="Pruebas oftalmológicas">
+        <PrivateLayout titlePage="Pacientes">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} >
                 <ContainerActions />
                 <TableAllProcessPilots rows={usersWithTestsOphthalmological} />
@@ -26,7 +26,7 @@ export default function Process({ usersWithTestsOphthalmological }) {
 }
 
 export async function getServerSideProps(context) {
-    const usersWithTestsOphthalmological = await backend.medical_test.ophthalmological.find_all()
+    const usersWithTestsOphthalmological = await backend.patients.find_all()
     return {
         props: {
             usersWithTestsOphthalmological

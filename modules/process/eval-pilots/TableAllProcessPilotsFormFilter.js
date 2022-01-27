@@ -1,7 +1,7 @@
 import { KeyboardArrowDown, Search } from '@mui/icons-material'
 import { Button, Grid, MenuItem, TextField } from '@mui/material'
 import React, { useState } from 'react'
-import Subtitle from '../../../components/Subtitle'
+import Subtitle, { typeSubtitle } from '../../../components/Subtitle'
 import styles from "../../../styles/EvalPilots.module.scss";
 
 export default function TableAllProcessPilotsFormFilter() {
@@ -12,16 +12,16 @@ export default function TableAllProcessPilotsFormFilter() {
         <>
             <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start" spacing={1}>
                 <Grid item xs={12} sm={12} md={3} lg={3} xl={3} >
-                    <Subtitle title="Pruebas Registradas" icon="manage_accounts" />
+                    <Subtitle title="Pacientes Registrados" icon="manage_accounts" component={typeSubtitle.h2} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={5} lg={5} xl={6} >
                     <TextField
                         size="small"
-                        label="Buscar prueba"
-                        placeholder="Buscar pruebas oftalmológicas de pacientes..."
+                        label="Buscar paciente"
+                        placeholder="Buscar pacientes..."
                         variant="outlined"
                         fullWidth
-                        helperText="Puede filtrar las pruebas por los núm. documento, nombre del Paciente o número de ticket."
+                        helperText="Puede filtrar los pacientes por cédula, pasaporte, nombre del paciente o correo."
                     />
                 </Grid>
                 <Grid item xs={6} sm={6} md={2} lg={2} xl={1} textAlign="center" >

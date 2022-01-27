@@ -7,7 +7,7 @@ import { getAllProcess } from '../../providers/ProcessData_Provider'
 
 export default function Home({ process }) {
     return (
-        <PrivateLayout titlePage="Pruebas médicas">
+        <PrivateLayout titlePage="Inicio">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} >
                 <GridAllProcess process={process} />
             </Grid>

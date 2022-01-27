@@ -1,38 +1,39 @@
 
 // React.js
 import React from 'react'
-// Next.js
-import { useRouter } from 'next/router'
 
 // Materal UI
-import { Button, Grid } from '@mui/material';
-import { TabContext } from '@mui/lab';
+import { Grid } from '@mui/material';
 
 // Local Components
 import PrivateLayout from '../../layouts/private_layout'
 import styles from "../../styles/RegisterPatient.module.scss";
-import SearchPatients from '../../modules/patient/TabSearchPatients';
+// Local Providers Data
+import { providers } from "../../providers";
+//Context 
+import { PatientsProvider } from "../../contexts/PatientSearchContext";
+import ContentSearchPatient from '../../modules/patient/ContentSearchPatient';
 
+const backend = providers.backend
 
-export default function SearchPatient() {
-    const router = useRouter()
-
-    const handleSelectedPatient = () => {
-        router.push("/process/eval-pilots/steps")
-    }
+export default function SearchPatient({ patients }) {
 
     return (
-        <PrivateLayout titlePage="Inicio">
+        <PrivateLayout titlePage="Buscar Paciente">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.mainContent} >
-                <TabContext value="1" >
-                    <SearchPatients />
-                </TabContext>
-                <Grid item>
-                    <Button variant="contained" onClick={handleSelectedPatient} >
-                        Seleccionar
-                    </Button>
-                </Grid>
+                <PatientsProvider>
+                    <ContentSearchPatient patients={patients} />
+                </PatientsProvider>
             </Grid>
         </PrivateLayout>
     )
+}
+
+export async function getServerSideProps(context) {
+    const patients = await backend.patients.find_all()
+    return {
+        props: {
+            patients
+        }, // will be passed to the page component as props
+    }
 }

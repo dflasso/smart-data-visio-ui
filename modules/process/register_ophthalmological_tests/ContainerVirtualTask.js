@@ -6,10 +6,10 @@ import { useRouter } from 'next/router'
 
 
 // Validations
-import { isNumber } from "../../../util/validations";
+import { isNumeric } from "../../../util/validations";
 
 export default function ContainerVirtualTask({ idTest }) {
-    const isIdValid = isNumber(idTest)
+    const isIdValid = isNumeric(idTest)
     const router = useRouter()
 
     const handleClickStereoscopic = () => {

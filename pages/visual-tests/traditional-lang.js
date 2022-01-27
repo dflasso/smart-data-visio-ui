@@ -9,12 +9,12 @@ import { providers } from "../../providers";
 
 const backend = providers.backend
 
-export default function TaditionalPage({ cardLang }) {
+export default function TaditionalPage({ cardLang, idTest = "0" }) {
     return (
         <PrivateLayout titlePage="Prueba Visual LANG">
             <Grid container direction="row" justifyContent="center" alignItems="center" className={styles.continer} spacing={2} >
                 <TestLangProvider>
-                    <LangTasks cardLang={cardLang} />
+                    <LangTasks cardLang={cardLang} idTest={idTest} />
                 </TestLangProvider>
             </Grid>
         </PrivateLayout>
@@ -23,10 +23,20 @@ export default function TaditionalPage({ cardLang }) {
 
 
 export async function getServerSideProps(context) {
+    let idTest = ''
+
+    if (typeof context.query !== "undefined" && typeof context.query === "object") {
+        if (typeof context.query.id_test_ophthalmological !== "undefined" && context.query.id_test_ophthalmological !== null) {
+            idTest = context.query.id_test_ophthalmological
+        }
+    }
+
     const cardLang = await backend.medical_test.ophthalmological.lang.findAll()
+
     return {
         props: {
-            cardLang
+            cardLang,
+            idTest
         }, // will be passed to the page component as props
     }
 }

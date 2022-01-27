@@ -1,5 +1,8 @@
-import { Grid } from '@mui/material'
+//React 
 import React from 'react'
+// Material UI
+import { Grid } from '@mui/material'
+// Styles
 import styles from "../../../styles/EvalPilots.module.scss";
 
 export default function TableAllProcessPilotsHeader() {
@@ -18,10 +21,10 @@ export default function TableAllProcessPilotsHeader() {
                 Fecha Nacimiento
         </Grid>
             <Grid item sx={{ display: { xl: 'block', lg: 'block', md: 'block', sm: 'block', xs: 'none' } }} sm={2} md={3} lg={1} xl={1} className={styles.headerTable}>
-                Editar
+                Ver
         </Grid>
             <Grid item sx={{ display: { xl: 'block', lg: 'block', md: 'block', sm: 'block', xs: 'none' } }} sm={2} md={1} lg={1} xl={1} className={styles.headerTable}>
-                Detalles
+                Iniciar Pruebas
         </Grid>
             <Grid item sx={{ display: { xl: 'block', lg: 'block', md: 'block', sm: 'block', xs: 'none' } }} sm={2} md={1} lg={1} xl={1} className={styles.headerTable}>
                 Reporte

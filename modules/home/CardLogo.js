@@ -3,7 +3,7 @@ import CardImageLogo from "../login/CardImageLogo";
 
 export default function CardLogo() {
     return (
-        <Grid item xs={12} sm={8} md={5} lg={3}  >
+        <Grid item xs={12} sm={8} md={5} lg={4}  >
             <Card >
                 <CardImageLogo />
                 <CardContent>
