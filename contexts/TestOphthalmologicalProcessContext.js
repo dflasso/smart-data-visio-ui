@@ -5,6 +5,9 @@ const initData = {
     langResults: {},
     ishiharaCards: [],
     ishiharaResults: {},
+    titmusResults: {},
+    titmusCircles: [],
+    titmusAnimals: [],
     currentTest: '1',
     currentTestIshihara: 0,
     openListTest: true,
@@ -23,6 +26,9 @@ export const actionTypes = {
     UPDATE_FLAG_SHOW_LIST_TEST: 6,
     SET_ID_TEST: 7,
     UPDATE_CURRENT_TEST_ISHIHARA: 8,
+    ADD_TITMUS_RESULTS: 9,
+    ADD_TITMUS_CIRCLES: 10,
+    ADD_TITMUS_ANIMALS: 11,
 }
 
 function reducer(state, action) {
@@ -66,6 +72,21 @@ function reducer(state, action) {
             return {
                 ...state,
                 currentTestIshihara: action.payload
+            }
+        case actionTypes.ADD_TITMUS_RESULTS:
+            return {
+                ...state,
+                titmusResults: action.payload
+            }
+        case actionTypes.ADD_TITMUS_CIRCLES:
+            return {
+                ...state,
+                titmusCircles: action.payload
+            }
+        case actionTypes.ADD_TITMUS_ANIMALS:
+            return {
+                ...state,
+                titmusAnimals: action.payload
             }
         default:
             return state

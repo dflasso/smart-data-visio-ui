@@ -3,6 +3,10 @@ import { findAllOphthalmologicalTests, createOphthalmologicalTests } from "./sma
 import { savePatient, findAllPatients, findByNumDocument, updatePatient } from "./smartDataBackend/patients";
 import { langFindAll, langSaveResult } from './smartDataBackend/lang'
 import { ishiharaFindAll, ishiharaSaveResult } from './smartDataBackend/ishihara'
+import {
+    putTitmusHouseFlyResults, putTitmusCirclesResults, putTitmusAnimalsResults,
+    findTitmusAllCircle, findTitmusAllAnimals
+} from "./smartDataBackend/titmus";
 
 export const providers = {
     backend: {
@@ -18,6 +22,19 @@ export const providers = {
                 ishihara: {
                     findAll: ishiharaFindAll,
                     saveResult: ishiharaSaveResult
+                },
+                titmus: {
+                    results: {
+                        updateHouseFly: putTitmusHouseFlyResults,
+                        updateCircles: putTitmusCirclesResults,
+                        updateAnimals: putTitmusAnimalsResults
+                    },
+                    circles: {
+                        findAll: findTitmusAllCircle
+                    },
+                    animals: {
+                        findAll: findTitmusAllAnimals
+                    }
                 }
             }
         },

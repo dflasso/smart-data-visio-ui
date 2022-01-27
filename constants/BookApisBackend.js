@@ -19,6 +19,17 @@ export default {
                     ishihara: {
                         find_all: '/v1/visual-test/classic/ishihara/',
                         save_result: '/v1/visual-test/classic/ishihara/results/'
+                    },
+                    titmus: {
+                        update_house_fly_results: '/v1/visual-test/classic/titmus/results/add_house_fly_results/',
+                        update_circles_results: '/v1/visual-test/classic/titmus/results/add_circles_results/',
+                        update_animals_results: '/v1/visual-test/classic/titmus/results/add_animals_results/',
+                        circles: {
+                            find_all: '/v1/visual-test/classic/titmus/cirlces/'
+                        },
+                        animals: {
+                            find_all: '/v1/visual-test/classic/titmus/animals'
+                        }
                     }
                 }
             }

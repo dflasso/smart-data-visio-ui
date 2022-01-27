@@ -1,5 +1,5 @@
 // React
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 // Local Context
 import TestOphthalmologicalProcessContext, { actionTypes } from "../contexts/TestOphthalmologicalProcessContext";
 // Provaiders Data
@@ -12,14 +12,28 @@ export default function useTestOphthalmologicalProcess({ idTest = "0" }) {
 
     useEffect(() => {
         backend.medical_test.ophthalmological.lang.findAll()
-            .then(data => dispatch({
-                type: actionTypes.ADD_LANG_CARDS,
-                payload: data
-            }))
+            .then(data => {
+                dispatch({
+                    type: actionTypes.ADD_LANG_CARDS,
+                    payload: data
+                })
+            })
 
         backend.medical_test.ophthalmological.ishihara.findAll()
             .then(data => dispatch({
                 type: actionTypes.ADD_ISHIHARA_CARDS,
+                payload: data
+            }))
+
+        backend.medical_test.ophthalmological.titmus.circles.findAll()
+            .then(data => dispatch({
+                type: actionTypes.ADD_TITMUS_CIRCLES,
+                payload: data
+            }))
+
+        backend.medical_test.ophthalmological.titmus.animals.findAll()
+            .then(data => dispatch({
+                type: actionTypes.ADD_TITMUS_ANIMALS,
                 payload: data
             }))
 

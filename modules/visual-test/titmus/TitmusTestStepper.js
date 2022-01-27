@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Button, Grid } from '@mui/material'
+import { Alert, AlertTitle, Button, CircularProgress, Grid } from '@mui/material'
 import React from 'react'
 import useTestOphthalmologicalTitmus from '../../../hooks/useTestOphthalmologicalTitmus'
 import ButtonAnimalsTest from './ButtonAnimalsTest'
@@ -6,7 +6,10 @@ import ButtonCirclesTest from './ButtonCirclesTest'
 import ButtonHouseFly from './ButtonHouseFly'
 
 export default function TitmusTestStepper() {
-    const { goNextTab, goPreviousTab } = useTestOphthalmologicalTitmus()
+    const { goNextTab, goPreviousTab,
+        idTest, circles, animals,
+        handleSaveHouseFly, handleSaveCirclesResults, handleSaveAnimalsResults } = useTestOphthalmologicalTitmus()
+
     return (
         <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1}>
 
@@ -21,7 +24,7 @@ export default function TitmusTestStepper() {
                 <Alert severity="info" >
                     <AlertTitle><b>Mosca.-</b> Ingresar los detalles del paciente al observar la mosca</AlertTitle>
 
-                    <ButtonHouseFly />
+                    <ButtonHouseFly idTest={idTest} onSave={handleSaveHouseFly} />
                 </Alert>
 
             </Grid>
@@ -29,7 +32,13 @@ export default function TitmusTestStepper() {
                 <Alert severity="info" >
                     <AlertTitle><b>Círculos.- </b>
                     Ingresar el círculo que el paciente escogio en cada figura.</AlertTitle>
-                    <ButtonCirclesTest />
+                    {
+                        (circles.length === 0) ?
+                            <CircularProgress />
+                            :
+                            <ButtonCirclesTest circles={circles} onSave={handleSaveCirclesResults} idTest={idTest} />
+                    }
+
                 </Alert>
 
             </Grid>
@@ -37,7 +46,7 @@ export default function TitmusTestStepper() {
                 <Alert severity="info" >
                     <AlertTitle><b>Animales.- </b>
                     Ingresar los animales que el paciente escogio en cada fila.</AlertTitle>
-                    <ButtonAnimalsTest />
+                    <ButtonAnimalsTest animals={animals} onSave={handleSaveAnimalsResults} idTest={idTest} />
                 </Alert>
 
             </Grid>
