@@ -74,7 +74,7 @@ export default function ButtonCirclesTest({ onSave, idTest = "0", circles = [] }
                 results
             }
         }
-
+        handleClose()
         if (typeof onSave === "function") {
             onSave({
                 data: request

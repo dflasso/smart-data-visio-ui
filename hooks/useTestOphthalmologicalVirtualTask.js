@@ -1,11 +1,7 @@
 // React
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 // Local Context
 import TestOphthalmologicalProcessContext, { actionTypes } from "../contexts/TestOphthalmologicalProcessContext";
-// Provaiders Data
-import { providers } from "../providers";
-
-const backend = providers.backend
 
 export default function useTestOphthalmologicalVirtualTask({ nextTab = "2", previousTab = "1" }) {
     const { state, dispatch } = useContext(TestOphthalmologicalProcessContext)

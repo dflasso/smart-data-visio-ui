@@ -5,13 +5,13 @@ import TestOphthalmologicalProcessContext, { actionTypes } from "../contexts/Tes
 // Provaiders Data
 import { providers } from "../providers";
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 export default function useTestOphthalmologicalProcess({ idTest = "0" }) {
     const { state, dispatch } = useContext(TestOphthalmologicalProcessContext)
 
     useEffect(() => {
-        backend.medical_test.ophthalmological.lang.findAll()
+        ownServices.medical_test.ophthalmological.lang.findAll()
             .then(data => {
                 dispatch({
                     type: actionTypes.ADD_LANG_CARDS,
@@ -19,19 +19,19 @@ export default function useTestOphthalmologicalProcess({ idTest = "0" }) {
                 })
             })
 
-        backend.medical_test.ophthalmological.ishihara.findAll()
+        ownServices.medical_test.ophthalmological.ishihara.findAll()
             .then(data => dispatch({
                 type: actionTypes.ADD_ISHIHARA_CARDS,
                 payload: data
             }))
 
-        backend.medical_test.ophthalmological.titmus.circles.findAll()
+        ownServices.medical_test.ophthalmological.titmus.circles.findAll()
             .then(data => dispatch({
                 type: actionTypes.ADD_TITMUS_CIRCLES,
                 payload: data
             }))
 
-        backend.medical_test.ophthalmological.titmus.animals.findAll()
+        ownServices.medical_test.ophthalmological.titmus.animals.findAll()
             .then(data => dispatch({
                 type: actionTypes.ADD_TITMUS_ANIMALS,
                 payload: data

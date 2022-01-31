@@ -1,4 +1,4 @@
-export const urlBase = process.env.NEXT_PUBLIC_BACKEND_SMART_DATA;
+export const urlBase = process.env.BACKEND_SMART_DATA;
 
 export default {
     security: {
@@ -28,7 +28,7 @@ export default {
                             find_all: '/v1/visual-test/classic/titmus/cirlces/'
                         },
                         animals: {
-                            find_all: '/v1/visual-test/classic/titmus/animals'
+                            find_all: '/v1/visual-test/classic/titmus/animals/'
                         }
                     }
                 }

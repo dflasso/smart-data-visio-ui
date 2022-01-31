@@ -7,7 +7,7 @@ import styles from "../../styles/TaditionalPage.module.scss";
 // Local Providers Data
 import { providers } from "../../providers";
 
-const backend = providers.backend
+const coreBackend = providers.coreBackend
 
 export default function TaditionalPage({ cardLang, idTest = "0" }) {
     return (
@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const cardLang = await backend.medical_test.ophthalmological.lang.findAll()
+    const cardLang = await coreBackend.medical_test.ophthalmological.lang.findAll()
 
     return {
         props: {

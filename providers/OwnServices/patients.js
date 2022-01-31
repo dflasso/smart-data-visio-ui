@@ -1,12 +1,12 @@
 // constants
-import APIs from "../../constants/BookApisBackend";
+import APIs from "../../constants/BookApisApp";
 // Middelware rest client 
-import restClient from "../../middlewares/clientBackend";
+import { clientOwnServices } from "../../middlewares";
 import handleErrorsApiCalled from "../../util/HandleApiFailed";
 
 export function savePatient({ request }) {
     return new Promise((resolve, reject) => {
-        restClient.post(APIs.v1.patients.save, request)
+        clientOwnServices.post(APIs.patients.create, request)
             .then(response => resolve(response.data))
             .catch(error => handleErrorsApiCalled(error, reject))
     })
@@ -14,7 +14,7 @@ export function savePatient({ request }) {
 
 export function updatePatient({ request }) {
     return new Promise((resolve, reject) => {
-        restClient.put(APIs.v1.patients.update({ id_patient: request.id }), request)
+        clientOwnServices.put(APIs.patients.update({ id_patient: request.id }), request)
             .then(response => resolve(response.data))
             .catch(error => handleErrorsApiCalled(error, reject))
     })
@@ -22,7 +22,7 @@ export function updatePatient({ request }) {
 
 export function findAllPatients() {
     return new Promise((resolve, reject) => {
-        restClient.get(APIs.v1.patients.save)
+        clientOwnServices.get(APIs.patients.get_all)
             .then(response => {
                 resolve(response.data)
             }).catch(error => handleErrorsApiCalled(error, reject))
@@ -31,7 +31,7 @@ export function findAllPatients() {
 
 export function findByNumDocument({ num_document = "" }) {
     return new Promise((resolve, reject) => {
-        restClient.get(APIs.v1.patients.find_by_num_document({ num_document }))
+        clientOwnServices.get(APIs.patients.find_by_num_document({ num_document }))
             .then(response => {
                 resolve(response.data)
             }).catch(error => handleErrorsApiCalled(error, reject))

@@ -9,7 +9,7 @@ import useLayout from './useLayout';
 // Constants
 import { titmusNumCircles, titmusTotalCircles, titmusNumAnimals, titmusRowsAnimals } from "../constants/titmus";
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 const buildCirclesData = (circlesIntbound = []) => {
     let circlesRecovery = []
@@ -81,7 +81,7 @@ export default function useTestOphthalmologicalTitmus() {
 
     const handleSaveHouseFly = ({ data }) => {
         updateFlagShowBackdrop({ show: true })
-        backend.medical_test.ophthalmological.titmus.results.updateHouseFly(data)
+        ownServices.medical_test.ophthalmological.titmus.results.updateHouseFly(data)
             .then(response => {
                 dispatch({
                     type: actionTypes.ADD_TITMUS_RESULTS,
@@ -105,7 +105,7 @@ export default function useTestOphthalmologicalTitmus() {
 
     const handleSaveCirclesResults = ({ data }) => {
         updateFlagShowBackdrop({ show: true })
-        backend.medical_test.ophthalmological.titmus.results.updateCircles(data)
+        ownServices.medical_test.ophthalmological.titmus.results.updateCircles(data)
             .then(response => {
                 dispatch({
                     type: actionTypes.ADD_TITMUS_RESULTS,
@@ -129,7 +129,7 @@ export default function useTestOphthalmologicalTitmus() {
 
     const handleSaveAnimalsResults = ({ data }) => {
         updateFlagShowBackdrop({ show: true })
-        backend.medical_test.ophthalmological.titmus.results.updateAnimals(data)
+        ownServices.medical_test.ophthalmological.titmus.results.updateAnimals(data)
             .then(response => {
                 dispatch({
                     type: actionTypes.ADD_TITMUS_RESULTS,

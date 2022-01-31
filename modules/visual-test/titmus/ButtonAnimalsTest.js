@@ -38,7 +38,14 @@ export default function ButtonAnimalsTest({ animals = [], onSave, idTest }) {
     }
 
     const getAnimalSelectedbyRow = (row = "") => {
-        return animalsSelecteds.find(animal => animal.row === row).id
+        try {
+            return animalsSelecteds.find(animal => animal.row === row).id
+        } catch (error) {
+            // Cuando cae en el catch la variable animalsSelecteds es un arreglo vacio
+            return ""
+        }
+
+
     }
 
     const handleSave = () => {
@@ -80,7 +87,7 @@ export default function ButtonAnimalsTest({ animals = [], onSave, idTest }) {
                 results
             }
         }
-
+        handleClose()
         if (typeof onSave === "function") {
             onSave({
                 data: request

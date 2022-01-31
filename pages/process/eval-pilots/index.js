@@ -12,7 +12,7 @@ import { providers } from "../../../providers";
 // Styles
 import styles from "../../../styles/Page.module.scss"
 
-const backend = providers.backend
+const coreBackend = providers.coreBackend
 
 export default function Process({ usersWithTestsOphthalmological }) {
     return (
@@ -26,7 +26,7 @@ export default function Process({ usersWithTestsOphthalmological }) {
 }
 
 export async function getServerSideProps(context) {
-    const usersWithTestsOphthalmological = await backend.patients.find_all()
+    const usersWithTestsOphthalmological = await coreBackend.patients.find_all()
     return {
         props: {
             usersWithTestsOphthalmological

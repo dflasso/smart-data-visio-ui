@@ -1,4 +1,4 @@
-import { ArrowBack, ArrowForward, Download, Info, PlayCircle, Upload } from '@mui/icons-material'
+import { ArrowBack, ArrowForward, Download, Info, Upload } from '@mui/icons-material'
 import { Alert, AlertTitle, Button, Grid, Step, StepContent, StepLabel, Stepper } from '@mui/material'
 import React from 'react'
 import useTestOphthalmologicalVirtualTask from '../../hooks/useTestOphthalmologicalVirtualTask'

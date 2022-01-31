@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 // Provider
 import { providers } from "../../../providers"
 
-const backend = providers.backend
+const coreBackend = providers.coreBackend
 
 const options = {
     providers: [
@@ -24,7 +24,7 @@ const options = {
                  * 
                  * TODO: llamar a la api y refrescar o validar el token enviado por un microfroend de login
                  */
-                backend.login({ username: credentials.username, password: credentials.password })
+                coreBackend.login({ username: credentials.username, password: credentials.password })
                     .then(
                         response => {
                             resolve({ jwtAccess: response.jwt })

@@ -13,7 +13,7 @@ import useLayout from '../../../hooks/useLayout';
 import Swal from 'sweetalert2';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 export default function ContainerInfoPatient({ idTest, patientNumDocument }) {
     //hook router
@@ -26,7 +26,7 @@ export default function ContainerInfoPatient({ idTest, patientNumDocument }) {
 
     useEffect(() => {
         updateFlagShowBackdrop({ show: true })
-        backend.patients.find_by_num_document({ num_document: patientNumDocument })
+        ownServices.patients.find_by_num_document({ num_document: patientNumDocument })
             .then(response => setPatient(response))
             .catch(error => {
                 updateFlagShowBackdrop({ show: false })

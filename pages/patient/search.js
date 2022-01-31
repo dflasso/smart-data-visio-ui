@@ -14,7 +14,7 @@ import { providers } from "../../providers";
 import { PatientsProvider } from "../../contexts/PatientSearchContext";
 import ContentSearchPatient from '../../modules/patient/ContentSearchPatient';
 
-const backend = providers.backend
+const coreBackend = providers.coreBackend
 
 export default function SearchPatient({ patients }) {
 
@@ -30,7 +30,7 @@ export default function SearchPatient({ patients }) {
 }
 
 export async function getServerSideProps(context) {
-    const patients = await backend.patients.find_all()
+    const patients = await coreBackend.patients.find_all()
     return {
         props: {
             patients

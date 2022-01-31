@@ -13,7 +13,7 @@ import Languages from '../constants/Languages';
 import { validarCedula } from "../util/validateDocuments";
 import { buildCurrentDateSimpleFormat } from '../util/ParserDate';
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 const optionalDataInit = {
     useEyeglasses: 'N',
@@ -76,7 +76,7 @@ export default function useFormRegisterPatient({ onSave, recoveryPatient = false
                 /**
                  * Update Patient
                  */
-                backend.patients.update({ request })
+                ownServices.patients.update({ request })
                     .then(handleSuccessSubmit)
                     .catch(handleErrorSubmit)
                     .finally(() => setOpen(false))
@@ -84,7 +84,7 @@ export default function useFormRegisterPatient({ onSave, recoveryPatient = false
                 /**
                  * Create patient
                  */
-                backend.patients.save({ request })
+                ownServices.patients.save({ request })
                     .then(handleSuccessSubmit)
                     .catch(handleErrorSubmit)
                     .finally(() => setOpen(false))
@@ -186,7 +186,7 @@ export default function useFormRegisterPatient({ onSave, recoveryPatient = false
 
         if (validCI) {
             setOpen(true)
-            backend.patients.find_by_num_document({ num_document: doc_identification })
+            ownServices.patients.find_by_num_document({ num_document: doc_identification })
                 .then(response => {
                     setExistPatient(true)
                     const values = {

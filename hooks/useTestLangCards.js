@@ -4,10 +4,10 @@ import TestLangContext, { actionTypes } from "../contexts/TestLangContext";
 import Swal from 'sweetalert2'
 //next 
 import { useRouter } from 'next/router'
-// backend
+// ownServices
 import { providers } from "../providers";
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 export const typesStateTask = {
     pending: 1,
@@ -27,7 +27,7 @@ export default function useTestLangCards() {
 
         updateFlagShowBackdrop({ showBackdrop: true })
 
-        backend.medical_test.ophthalmological.lang.saveResult(requets)
+        ownServices.medical_test.ophthalmological.lang.saveResult(requets)
             .then(
                 response => {
                     dispatch({

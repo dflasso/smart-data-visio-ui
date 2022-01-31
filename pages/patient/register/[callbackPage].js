@@ -14,7 +14,7 @@ import styles from "../../../styles/RegisterPatient.module.scss";
 //Provider
 import { providers } from "../../../providers";
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 export default function RegisterPatientCallback() {
     const router = useRouter()
@@ -38,7 +38,7 @@ export default function RegisterPatientCallback() {
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    backend.medical_test.ophthalmological.create({ patient_id: data.id })
+                    ownServices.medical_test.ophthalmological.create({ patient_id: data.id })
                         .then(
                             response => {
                                 setOpen(true)

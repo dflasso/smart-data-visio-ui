@@ -12,6 +12,7 @@ import ListTestOphthalmological from './ListTestOphthalmological';
 import LangListCards from '../../visual-test/lang/LangListCards';
 import IshisharaTestStepper from '../../visual-test/ishihara/IshisharaTestStepper';
 import TitmusTestStepper from '../../visual-test/titmus/TitmusTestStepper';
+import FinalStep from "./FinalStep";
 
 import VirtualTaskStep from '../../virtual_task/VirtualTaskStep';
 import { ArrowCircleLeftRounded, ArrowCircleRightRounded } from '@mui/icons-material';
@@ -55,7 +56,10 @@ export default function TestOphthalmologicalProcess({ idTest }) {
                             <VirtualTaskStep name="Percepción visual de color" numNextTab="7" numPreviousTab="5" />
                         </TabPanel>
                         <TabPanel value="7">
-                            <VirtualTaskStep name="Campo Visual" numNextTab="1" numPreviousTab="6" />
+                            <VirtualTaskStep name="Campo Visual" numNextTab="8" numPreviousTab="6" />
+                        </TabPanel>
+                        <TabPanel value="8">
+                            <FinalStep />
                         </TabPanel>
                     </Grid>
                 </Grid>

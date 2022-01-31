@@ -14,7 +14,7 @@ import useLayout from '../../../hooks/useLayout';
 // Styles
 import styles from "../../../styles/EvalPilots.module.scss"
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 export default function ButtonStartProcess({ patient_data = {} }) {
     // hook layout
@@ -33,7 +33,7 @@ export default function ButtonStartProcess({ patient_data = {} }) {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 updateFlagShowBackdrop({ show: true })
-                backend.medical_test.ophthalmological.create({ patient_id: patient_data.id })
+                ownServices.medical_test.ophthalmological.create({ patient_id: patient_data.id })
                     .then(
                         response => {
                             router.push(`/process/eval-pilots/steps?id=${response.id}&patient_id=${patient_data.doc_identification}`).finally(() => updateFlagShowBackdrop({ show: false }))

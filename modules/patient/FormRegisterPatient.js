@@ -84,7 +84,7 @@ export default function FormRegisterPatient({ onSave, initialValues = initForm, 
 
 
     return (
-        <Grid item xs={12} md={11} lg={6} container direction="row" justifyContent="center" alignItems="center" className={styles.content} >
+        <Grid item xs={12} md={11} lg={8} xl={6} container direction="row" justifyContent="center" alignItems="center" className={styles.content} >
             <Card>
                 <CardContent>
                     <Backdrop

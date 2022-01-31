@@ -40,7 +40,7 @@ export default function ButtonHouseFly({ onSave, idTest = "0" }) {
                 finished_at: buildCurrentDateSimpleFormat()
             }
         }
-
+        handleClose()
         if (typeof onSave === "function") {
             onSave({
                 data: request

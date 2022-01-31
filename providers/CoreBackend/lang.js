@@ -1,11 +1,12 @@
 // constants
 import APIs from "../../constants/BookApisBackend";
 // Middelware rest client 
-import restClient from "../../middlewares/clientBackend";
+import { clientCoreBackendServices } from "../../middlewares";
+import handleErrorsApiCalled from "../../util/HandleApiFailed";
 
 export function langFindAll() {
     return new Promise((resolve, reject) => {
-        restClient.get(APIs.v1.medial_test.ophthalmological.classic_test.lang.find_all)
+        clientCoreBackendServices.get(APIs.v1.medial_test.ophthalmological.classic_test.lang.find_all)
             .then(response => resolve(response.data))
             .catch(error => handleErrorsApiCalled(error, reject))
     })
@@ -14,8 +15,13 @@ export function langFindAll() {
 
 export function langSaveResult(request) {
     return new Promise((resolve, reject) => {
-        restClient.post(APIs.v1.medial_test.ophthalmological.classic_test.lang.save_result, request)
+        clientCoreBackendServices.post(APIs.v1.medial_test.ophthalmological.classic_test.lang.save_result, request)
             .then(response => resolve(response.data))
             .catch(error => handleErrorsApiCalled(error, reject))
     })
+}
+
+export const langCoreBackendServices = {
+    langFindAll,
+    langSaveResult
 }

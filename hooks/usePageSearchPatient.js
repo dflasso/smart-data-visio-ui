@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 //Provider
 import { providers } from "../providers";
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 export default function usePageSearchPatient() {
     const { state, dispatch } = useContext(PatientSearchContext)
@@ -35,7 +35,7 @@ export default function usePageSearchPatient() {
     const handleSelectedPatient = () => {
         const id = (typeof state.patientSelected === "object") ? state.patientSelected.id : "0"
         setOpen(true)
-        backend.medical_test.ophthalmological.create({ patient_id: id })
+        ownServices.medical_test.ophthalmological.create({ patient_id: id })
             .then(
                 response => {
                     router.push(`/process/eval-pilots/steps?id=${response.id}`).finally(() => setOpen(false))

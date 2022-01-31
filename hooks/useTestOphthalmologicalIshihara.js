@@ -7,7 +7,7 @@ import TestOphthalmologicalProcessContext, { actionTypes } from "../contexts/Tes
 import { providers } from "../providers";
 import useLayout from './useLayout';
 
-const backend = providers.backend
+const ownServices = providers.ownServices
 
 export default function useTestOphthalmologicalIshihara() {
     const { state, dispatch } = useContext(TestOphthalmologicalProcessContext)
@@ -106,7 +106,7 @@ export default function useTestOphthalmologicalIshihara() {
             results: [cardInfo]
         }
         updateFlagShowBackdrop({ show: true })
-        backend.medical_test.ophthalmological.ishihara.saveResult(requets)
+        ownServices.medical_test.ophthalmological.ishihara.saveResult(requets)
             .then(
                 response => {
 
