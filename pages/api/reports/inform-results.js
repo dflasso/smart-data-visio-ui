@@ -1,8 +1,22 @@
-export default function handler(req, res) {
+import ReactPDF from '@react-pdf/renderer';
+import { promisify } from "util";
+import stream from 'stream';
+import DocInformResults from '../../../modules/reports/DocInformResults';
+
+
+
+const pipeline = promisify(stream.pipeline);
+
+
+
+export default async function handler(req, res) {
 
     switch (req.method) {
         case 'GET':
-            res.status(200).json(processDefault)
+            res.setHeader('Content-Type', 'application/pdf');
+            res.setHeader('Content-Disposition', 'attachment; filename=informe_resultados.pdf');
+            const stream = await ReactPDF.renderToStream(<DocInformResults />);
+            await pipeline(stream, res);
             break;
 
         default:
@@ -10,3 +24,4 @@ export default function handler(req, res) {
             break;
     }
 }
+
