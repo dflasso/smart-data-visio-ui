@@ -3,11 +3,15 @@ import { Alert, AlertTitle, Button, Grid, Step, StepContent, StepLabel, Stepper 
 import React from 'react'
 import useTestOphthalmologicalVirtualTask from '../../hooks/useTestOphthalmologicalVirtualTask'
 
+// Constants
+import { typeQuestionary } from "../../constants/QuestionaryQuestions";
+
 //Styles
 import styles from "../../styles/VirtualTaskStep.module.scss";
 import QuestionaryDialog from '../questionnaires/QuestionaryDialog';
+import DiaglosEvaluation from '../evaluation/DialogEvaluation';
 
-export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2", numPreviousTab = "1" }) {
+export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2", numPreviousTab = "1", num_test_group = "0" }) {
     const { goNextTab, goPreviousTab, activeStep,
         handleNextTest, handleBackTest } = useTestOphthalmologicalVirtualTask({ nextTab: numNextTab, previousTab: numPreviousTab })
 
@@ -38,7 +42,7 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Button startIcon={<Upload />} variant="contained" component="label" > Subir acta firmada.
-                                    <input type="file" hidden /></Button>
+                                        <input type="file" hidden /></Button>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Button startIcon={<ArrowForward />} variant="contained" color="inherit" onClick={handleNextTest}> Continuar con el proceso.</Button>
@@ -52,7 +56,12 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
                             <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1} className={styles.containerStep}>
                                 <Grid item xs={12} className={styles.containerStepHeader} ><Info color="info" /> Por favor, realize el siguiente cuestionario..</Grid>
                                 <Grid item xs={4}>
-                                    <QuestionaryDialog />
+                                    <QuestionaryDialog
+                                        titleDialog={`Cuestionario previo a la tarea: ${name}`}
+                                        code_virtual_task={code}
+                                        num_test_group={num_test_group}
+                                        typeQuestionary={typeQuestionary.pre}
+                                    />
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Button startIcon={<ArrowBack />} variant="contained" color="inherit" onClick={handleBackTest}  >Regresar </Button>
@@ -74,7 +83,7 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Button startIcon={<Upload />} variant="contained" component="label" > Subir archivo
-                                    <input type="file" hidden /></Button>
+                                        <input type="file" hidden /></Button>
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Button startIcon={<ArrowBack />} variant="contained" color="inherit" onClick={handleBackTest}  >Regresar </Button>
@@ -95,7 +104,12 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
                                     </Alert>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <QuestionaryDialog />
+                                    <QuestionaryDialog
+                                        titleDialog={`Cuestionario posterior a la tarea: ${name}`}
+                                        code_virtual_task={code}
+                                        num_test_group={num_test_group}
+                                        typeQuestionary={typeQuestionary.post}
+                                    />
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Button startIcon={<ArrowBack />} variant="contained" color="inherit" onClick={handleBackTest}  >Regresar </Button>
@@ -107,7 +121,7 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
                         </StepContent>
                     </Step>
                     <Step>
-                        <StepLabel>Evaluación de Satisfación</StepLabel>
+                        <StepLabel>Evaluación de Usabilidad</StepLabel>
                         <StepContent>
                             <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1} className={styles.containerStep}>
                                 <Grid item xs={12}>
@@ -116,7 +130,12 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
                                     </Alert>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <QuestionaryDialog />
+                                    <DiaglosEvaluation
+                                        titleDialog={`Evaluación de Usabilidad de la tarea: ${name}`}
+                                        code_virtual_task={code}
+                                        num_test_group={num_test_group}
+                                        typeQuestionary={typeQuestionary.usability}
+                                    />
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Button startIcon={<ArrowBack />} variant="contained" color="inherit" onClick={handleBackTest}  >Regresar </Button>

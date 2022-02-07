@@ -35,7 +35,10 @@ export default {
                         find_all: '/medial_test/titmus/animals'
                     }
                 }
-            }
+            },
+            questionnaries: `/questionnaire`,
+            evaluation_usability: '/evaluations',
+            save_questionnarie_answer: '/questionnaire'
         }
     }
 }

@@ -45,6 +45,7 @@ export default function useLogin() {
                     if (response.ok) {
                         router.push('/home').finally(() => { setOpenBackdrop(false) })
                     } else {
+                        setOpenBackdrop(false)
                         setAuthenticationFailed({
                             show: true,
                             message: "Correo electrónico o contraseña incorrecta."

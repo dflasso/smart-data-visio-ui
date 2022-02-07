@@ -5,6 +5,7 @@ import { langCoreBackendServices } from "./CoreBackend/lang";
 import { ishiharaCoreBackendServices } from "./CoreBackend/ishihara";
 import { titmusCoreBackendServices } from "./CoreBackend/titmus";
 import { patientsCoreBackendServices } from "./CoreBackend/patients";
+import { CoreBackendQuestionnarieServices } from "./CoreBackend/questionnarie";
 
 // OwnServices
 import login from "./OwnServices/loginProvider";
@@ -16,6 +17,9 @@ import {
     putTitmusHouseFlyResults, putTitmusCirclesResults, putTitmusAnimalsResults,
     findTitmusAllCircle, findTitmusAllAnimals
 } from "./OwnServices/titmus";
+import { QuestionnarieFindQuestions, QuestionnarieSaveAnswers } from "./OwnServices/questionnarie"
+import { EvaluationUsabilityFindQuestions } from "./OwnServices/evaluation"
+
 
 export const ownServices = {
     login,
@@ -42,6 +46,15 @@ export const ownServices = {
                 },
                 animals: {
                     findAll: findTitmusAllAnimals
+                }
+            },
+            questionarie: {
+                questions_get_all: QuestionnarieFindQuestions,
+                answer_save: QuestionnarieSaveAnswers
+            },
+            evaluations: {
+                usability: {
+                    find_questions: EvaluationUsabilityFindQuestions
                 }
             }
         }
@@ -80,6 +93,9 @@ export const coreBackend = {
                 animals: {
                     findAll: titmusCoreBackendServices.findTitmusAllAnimals
                 }
+            },
+            questionarie: {
+                save_answers: CoreBackendQuestionnarieServices.QuestionnarieSaveAnswers
             }
         }
     },

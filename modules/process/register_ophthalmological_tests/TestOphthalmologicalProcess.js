@@ -47,16 +47,16 @@ export default function TestOphthalmologicalProcess({ idTest }) {
                         <TabPanel value="2"> <IshisharaTestStepper /> </TabPanel>
                         <TabPanel value="3"><TitmusTestStepper /> </TabPanel>
                         <TabPanel value="4">
-                            <VirtualTaskStep name="Visión estereoscópica" numNextTab="5" numPreviousTab="3" />
+                            <VirtualTaskStep name="Visión estereoscópica" code='vt001' numNextTab="5" numPreviousTab="3" num_test_group={idTest} />
                         </TabPanel>
                         <TabPanel value="5">
-                            <VirtualTaskStep name="Percepción visual de profundidad" numNextTab="6" numPreviousTab="4" />
+                            <VirtualTaskStep name="Percepción visual de profundidad" code='vt002' numNextTab="6" numPreviousTab="4" num_test_group={idTest} />
                         </TabPanel>
                         <TabPanel value="6">
-                            <VirtualTaskStep name="Percepción visual de color" numNextTab="7" numPreviousTab="5" />
+                            <VirtualTaskStep name="Percepción visual de color" code='vt003' numNextTab="7" numPreviousTab="5" num_test_group={idTest} />
                         </TabPanel>
                         <TabPanel value="7">
-                            <VirtualTaskStep name="Campo Visual" numNextTab="8" numPreviousTab="6" />
+                            <VirtualTaskStep name="Campo Visual" code='vt004' numNextTab="8" numPreviousTab="6" num_test_group={idTest} />
                         </TabPanel>
                         <TabPanel value="8">
                             <FinalStep />

@@ -31,6 +31,9 @@ export default {
                             find_all: '/v1/visual-test/classic/titmus/animals/'
                         }
                     }
+                },
+                questionnarie: {
+                    save_answers: '/v1/tests/ophthalmological/virtual_task/questionaries/'
                 }
             }
         },
