@@ -1,11 +1,11 @@
 import React from 'react'
 import PrivateLayout from '../../layouts/private_layout'
-import ContentHome from '../../modules/home/Content'
+import { ContentMainAdminUsers } from '../../modules/users'
 
-export default function Home() {
+export default function Users() {
     return (
-        <PrivateLayout titlePage="Inicio">
-            <ContentHome />
+        <PrivateLayout titlePage="Usuarios">
+            <ContentMainAdminUsers />
         </PrivateLayout>
     )
 }

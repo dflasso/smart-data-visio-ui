@@ -7,7 +7,7 @@ import FactoryItemsMenu from "./FactoryItemsMenu";
 const itemsMenu = [
     {
         id: "1",
-        name: "Seguridades",
+        name: "Administración",
         icon: "security",
         hasSubItems: true,
         url: "",
@@ -23,38 +23,6 @@ const itemsMenu = [
     },
     {
         id: "3",
-        name: "Cuestionarios",
-        icon: "quiz",
-        hasSubItems: true,
-        url: "",
-        principalMenu: null
-    },
-    {
-        id: "4",
-        name: "Pruebas Visuales",
-        icon: "visibility",
-        hasSubItems: true,
-        url: "",
-        principalMenu: null
-    },
-    {
-        id: "5",
-        name: "Evaluaciones",
-        icon: "feed",
-        hasSubItems: true,
-        url: "",
-        principalMenu: null
-    },
-    {
-        id: "6",
-        name: "Reportes",
-        icon: "assessment",
-        hasSubItems: true,
-        url: "",
-        principalMenu: null
-    },
-    {
-        id: "7",
         name: "Usuarios",
         icon: "account_circle",
         hasSubItems: false,
@@ -62,117 +30,13 @@ const itemsMenu = [
         principalMenu: "1"
     },
     {
-        id: "8",
-        name: "Perfiles",
-        icon: "admin_panel_settings",
-        hasSubItems: false,
-        url: "/securiy/profiles",
-        principalMenu: "1"
-    },
-    {
-        id: "9",
-        name: "Asignación Perfil de Usuarios",
-        icon: "manage_accounts",
-        hasSubItems: false,
-        url: "/securiy/profiles-users",
-        principalMenu: "1"
-    },
-    {
-        id: "10",
-        name: "Registro Pacientes",
-        icon: "add_circle",
-        hasSubItems: false,
-        url: "/patient/register",
-        principalMenu: "2"
-    },
-    {
         id: "11",
-        name: "Admin. Pacientes",
-        icon: "add_circle",
-        hasSubItems: false,
-        url: "/patient/admin",
-        principalMenu: "2"
-    },
-    {
-        id: "12",
-        name: "Cuestionario Previo",
-        icon: "drive_file_rename_outline",
-        hasSubItems: false,
-        url: "/questionnaire/pre",
-        principalMenu: "3"
-    },
-    {
-        id: "13",
-        name: "Cuestionario Posterior",
-        icon: "update",
-        hasSubItems: false,
-        url: "/questionnaire/post",
-        principalMenu: "3"
-    },
-    {
-        id: "14",
-        name: "Tradicionales",
-        icon: "rate_review",
-        hasSubItems: false,
-        url: "/visual-tests/traditionals",
-        principalMenu: "4"
-    },
-    {
-        id: "15",
-        name: "Virtuales",
-        icon: "laptop_mac",
-        hasSubItems: false,
-        url: "/visual-tests/virtuals",
-        principalMenu: "4"
-    },
-    {
-        id: "16",
-        name: "Eval. Prueba Visual",
-        icon: "summarize",
-        hasSubItems: false,
-        url: "/evaluations/visual-test",
-        principalMenu: "5"
-    },
-    {
-        id: "17",
-        name: "Recomendación por Paciente",
-        icon: "find_in_page",
-        hasSubItems: false,
-        url: "/report/by-patient",
-        principalMenu: "6"
-    },
-    {
-        id: "18",
-        name: "Grupo de Pacientes",
-        icon: "find_in_page",
-        hasSubItems: false,
-        url: "/report/many-patients",
-        principalMenu: "6"
-    },
-    {
-        id: "19",
-        name: "Grupo de Pruebas Visuales",
-        icon: "find_in_page",
-        hasSubItems: false,
-        url: "/report/by-visual-test",
-        principalMenu: "6"
-    },
-    {
-        id: "20",
-        name: "Procesos",
-        icon: "list",
-        hasSubItems: true,
-        url: "",
-        principalMenu: null
-    },
-    {
-        id: "22",
         name: "Pruebas Optamológicas",
-        icon: "find_in_page",
+        icon: "add_circle",
         hasSubItems: false,
         url: "/process/eval-pilots",
-        principalMenu: "20"
-    },
+        principalMenu: "2"
+    }
 ]
 
 const orderItemsMenu = (items = []) => {

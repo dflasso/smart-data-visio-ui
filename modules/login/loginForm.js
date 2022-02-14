@@ -37,7 +37,7 @@ export default function LoginForm() {
             <form>
                 <Grid container spacing={2}>
                     <Grid item xs={12} >
-                        <label className={styles.labelInputs}> Nombre de Usuario</label>
+                        <label className={styles.labelInputs}>Correo electrónico</label>
                     </Grid>
                     <Grid item xs={12} >
                         <OutlinedInput
