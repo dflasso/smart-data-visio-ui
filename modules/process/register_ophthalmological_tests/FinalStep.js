@@ -6,12 +6,12 @@ import { useRouter } from 'next/router'
 //Styles
 import styles from "../../../styles/VirtualTaskStep.module.scss";
 
-export default function FinalStep() {
+export default function FinalStep({ idTest, patientNumDocument }) {
     const router = useRouter()
     const { handleBackTest } = useTestOphthalmologicalVirtualTask({ nextTab: "1", previousTab: "7" })
 
     const handleCreateReport = () => {
-        window.open("/template_Informe_Resultados.pdf", "_blank")
+        router.push(`/report/by-patient?id=${idTest}&patient_id=${patientNumDocument}`)
     }
 
     const handleFinished = () => {

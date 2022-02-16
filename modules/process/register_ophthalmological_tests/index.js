@@ -41,7 +41,7 @@ export default function RegisterOphthalmologicalTests({ idTest = "", patientNumD
             {/* <ContaienerClassicTest idTest={idTest} />
             <ContainerVirtualTask idTest={idTest} /> */}
             <TestOphthalmologicalProcessProvider>
-                <TestOphthalmologicalProcess idTest={idTest} />
+                <TestOphthalmologicalProcess idTest={idTest} patientNumDocument={patientNumDocument} />
             </TestOphthalmologicalProcessProvider>
             <ButtonsFooter idTest={idTest} />
         </>

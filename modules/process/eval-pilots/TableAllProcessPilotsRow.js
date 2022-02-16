@@ -7,6 +7,7 @@ import { Grid, IconButton } from '@mui/material'
 import styles from "../../../styles/EvalPilots.module.scss"
 import BtnEditPatient from '../../patient/BtnEditPatient'
 import ButtonStartProcess from '../register_ophthalmological_tests/ButtonStartProcess'
+import { useRouter } from 'next/router'
 
 const processDefault = {
     numTicket: "1",
@@ -19,6 +20,11 @@ const processDefault = {
 }
 
 export default function TableAllProcessPilotsRow({ row = processDefault }) {
+    const router = useRouter()
+
+    const handleCreateReport = () => {
+        router.push(`/report/by-patient?id=36&patient_id=${row.doc_identification}`)
+    }
 
 
 
@@ -43,14 +49,14 @@ export default function TableAllProcessPilotsRow({ row = processDefault }) {
                 <ButtonStartProcess patient_data={row} />
             </Grid>
             <Grid item sx={{ display: { xl: 'block', lg: 'block', md: 'block', sm: 'block', xs: 'none' } }} sm={2} md={1} lg={1} xl={1} textAlign="center" >
-                <IconButton >
+                <IconButton onClick={handleCreateReport} >
                     <PictureAsPdf className={styles.BtnReportRow} />
                 </IconButton>
             </Grid>
             <Grid item sx={{ display: { xl: 'none', lg: 'none', md: 'none', sm: 'none', xs: 'block' } }} xs={5} textAlign="center" >
                 <BtnEditPatient patient_data={row} />
                 <ButtonStartProcess patient_data={row} />
-                <IconButton className={styles.BtnReportRow} >
+                <IconButton className={styles.BtnReportRow} onClick={handleCreateReport}>
                     <PictureAsPdf />
                 </IconButton>
             </Grid>

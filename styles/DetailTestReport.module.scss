@@ -1,0 +1,56 @@
+@import "lib/colors";
+@import "lib/dimensions";
+@import "lib/typografic";
+
+
+.TbTestCellHeaderDescription{ 
+    padding: 5px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-primary-dark;
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.TbTestCellDescription{ 
+    padding: 5px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-primary-dark;
+    margin-right: 4px;
+    
+}
+
+.TbTestCellValue{ 
+    padding: 5px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-primary-dark;
+    margin-left: 1px;
+
+    text-align: right;
+}
+
+.TbTestCellTotalDescription{ 
+    padding: 5px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-gris;
+    background-color: $color-gris-light;
+    margin-right: 4px;
+}
+
+.TbTestCellTotalValue{ 
+    padding: 5px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-gris;
+    background-color: $color-gris-light;
+    margin-left: 1px;
+    text-align: right;
+}

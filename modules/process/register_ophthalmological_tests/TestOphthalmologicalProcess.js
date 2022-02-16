@@ -17,7 +17,7 @@ import FinalStep from "./FinalStep";
 import VirtualTaskStep from '../../virtual_task/VirtualTaskStep';
 import { ArrowCircleLeftRounded, ArrowCircleRightRounded } from '@mui/icons-material';
 
-export default function TestOphthalmologicalProcess({ idTest }) {
+export default function TestOphthalmologicalProcess({ idTest, patientNumDocument }) {
 
     const { currentTest, openListTest, showListTest } = useTestOphthalmologicalProcess({ idTest })
 
@@ -59,7 +59,7 @@ export default function TestOphthalmologicalProcess({ idTest }) {
                             <VirtualTaskStep name="Campo Visual" code='vt004' numNextTab="8" numPreviousTab="6" num_test_group={idTest} />
                         </TabPanel>
                         <TabPanel value="8">
-                            <FinalStep />
+                            <FinalStep idTest={idTest} patientNumDocument={patientNumDocument} />
                         </TabPanel>
                     </Grid>
                 </Grid>
