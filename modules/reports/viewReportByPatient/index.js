@@ -7,6 +7,13 @@ import Recomendation from './Recomendation'
 import TableSummaryTest from './TableSummaryTest'
 import TableSummaryTestClasicVsVirtual from './TableSummaryTestClasicVsVirtual'
 import { useRouter } from 'next/router'
+import RecomendationsItems from './RecomendationsItems'
+
+const recomendations = [
+    "En base a los resultados de las pruebas visuales en conjunto: posiblemente el paciente no tiene una deficiencia visual",
+    "En base a los resultados  las pruebas visuales de Lang y Percepción de profundidad: no se ha encontrado una posible deficiencia visual de estereopsis. ",
+    "En base a los resultados  las pruebas visuales de Ishihara y Percepción de color: no se ha encontrado una posible deficiencia visual del color. "
+]
 
 export default function ContentReportByPatient({ idTest, patientNumDocument }) {
     const router = useRouter()
@@ -20,7 +27,15 @@ export default function ContentReportByPatient({ idTest, patientNumDocument }) {
     return (
         <>
             <ContainerInfoPatient idTest={idTest} patientNumDocument={patientNumDocument} />
-            <Grid container direction="row" justifyContent="center" justifyItems="center" xs={12} md={10} lg={8} marginBottom={2} >
+            <Grid container direction="row" justifyContent="center" justifyItems="center" xs={12} ></Grid>
+            <Grid container direction="row" justifyContent="center" justifyItems="center" xs={12} sm={10} md={8} lg={7} xl={6} marginBottom={5} >
+                <RecomendationsItems
+                    title='Recomendaciones/Sugerencias: '
+                    recomentationsText={recomendations}
+                />
+            </Grid>
+
+            {/* <Grid container direction="row" justifyContent="center" justifyItems="center" xs={12} md={10} lg={8} marginBottom={2} >
                 <Grid item xs={12} lg={6}>
                     <DetailTest
                         title=' Resultados de la prueba de lang:'
@@ -111,7 +126,7 @@ export default function ContentReportByPatient({ idTest, patientNumDocument }) {
                     title='Recomendación/Sugerencia: '
                     recomentationText='No se ha encontrado una posible deficiencia visual del color. '
                 />
-            </Grid>
+            </Grid> */}
 
             <Grid container direction="row" justifyContent="center" justifyItems="center" xs={12} marginBottom={5}>
                 <Grid item xs={6} md={5} lg={4} xl={2} textAlign="center">

@@ -3,7 +3,7 @@ import React from 'react'
 import styles from '../styles/PublicLayout.module.scss'
 
 
-export default function PublicLayout({ children, titlePage = "", titleTab = "", msgFooter = "© 2021 CICTE - ESPE", currentPage = 0 }) {
+export default function PublicLayout({ children, titlePage = "", titleTab = "", msgFooter = "© 2021 Smart Data Visio", currentPage = 0 }) {
     return (
         <>
             <Head>
