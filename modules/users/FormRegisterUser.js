@@ -229,13 +229,10 @@ export default function FormRegisterUser({ onSave, initialValues = initForm, rec
                                         <OutlinedInput
                                             fullWidth
                                             id="phone"
+                                            type='password'
                                             name="phone"
                                             size="small"
-                                            value={formik.values.phone}
-                                            onChange={formik.handleChange}
-                                            error={formik.touched.phone && Boolean(formik.errors.phone)}
                                         />
-                                        {formik.touched.phone && (<small style={{ color: '#FF0000' }}  > {formik.errors.phone} </small>)}
                                     </Grid>
                                     <Grid item xs={12} md={4} lg={3}  >
                                         <label>Perfil:<b style={{ color: '#FF0000' }} >*</b> </label>
@@ -246,11 +243,7 @@ export default function FormRegisterUser({ onSave, initialValues = initForm, rec
                                             id="phone"
                                             name="phone"
                                             size="small"
-                                            value={formik.values.phone}
-                                            onChange={formik.handleChange}
-                                            error={formik.touched.phone && Boolean(formik.errors.phone)}
                                         />
-                                        {formik.touched.phone && (<small style={{ color: '#FF0000' }}  > {formik.errors.phone} </small>)}
                                     </Grid>
                                 </Grid>
 

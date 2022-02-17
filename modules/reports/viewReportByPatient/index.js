@@ -11,8 +11,15 @@ import RecomendationsItems from './RecomendationsItems'
 
 const recomendations = [
     "En base a los resultados de las pruebas visuales en conjunto: posiblemente el paciente no tiene una deficiencia visual",
-    "En base a los resultados  las pruebas visuales de Lang y Percepción de profundidad: no se ha encontrado una posible deficiencia visual de estereopsis. ",
-    "En base a los resultados  las pruebas visuales de Ishihara y Percepción de color: no se ha encontrado una posible deficiencia visual del color. "
+    "En base a los resultados de las pruebas visuales de Lang y Percepción de profundidad: no se ha encontrado una posible deficiencia visual de estereopsis. ",
+    "En base a los resultados de las pruebas visuales de Ishihara y Percepción de color: no se ha encontrado una posible deficiencia visual del color. "
+]
+
+
+const recomendations1 = [
+    ".................................................................................................................................................................",
+    ".................................................................................................................................................................",
+    "................................................................................................................................................................."
 ]
 
 export default function ContentReportByPatient({ idTest, patientNumDocument }) {
