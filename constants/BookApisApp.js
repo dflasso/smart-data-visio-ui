@@ -36,6 +36,11 @@ export default {
                     }
                 }
             },
+            virtual_task: {
+                depth_perception: {
+                    upload_results: ({ num_document_patient = "", group_id = "0" }) => `virtual_task/depth_perception?num_document_patient=${num_document_patient}&group_id=${group_id}`
+                }
+            },
             questionnaries: `/questionnaire`,
             evaluation_usability: '/evaluations',
             save_questionnarie_answer: '/questionnaire'

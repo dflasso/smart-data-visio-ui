@@ -19,7 +19,8 @@ import {
 } from "./OwnServices/titmus";
 import { QuestionnarieFindQuestions, QuestionnarieSaveAnswers } from "./OwnServices/questionnarie"
 import { EvaluationUsabilityFindQuestions } from "./OwnServices/evaluation"
-
+import { uploadResultsDepthPerception } from "./OwnServices/virtualTask";
+import { uploadResultsDepthPerceptionCoreBackend } from "./CoreBackend/virtualTask";
 
 export const ownServices = {
     login,
@@ -46,6 +47,11 @@ export const ownServices = {
                 },
                 animals: {
                     findAll: findTitmusAllAnimals
+                }
+            },
+            virtualTask: {
+                depthPerception: {
+                    uploadResults: uploadResultsDepthPerception
                 }
             },
             questionarie: {
@@ -92,6 +98,11 @@ export const coreBackend = {
                 },
                 animals: {
                     findAll: titmusCoreBackendServices.findTitmusAllAnimals
+                }
+            },
+            virtualTask: {
+                depthPerception: {
+                    uploadResults: uploadResultsDepthPerceptionCoreBackend
                 }
             },
             questionarie: {

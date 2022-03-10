@@ -27,20 +27,20 @@ export default function TableAllProcessPilotsFormFilter() {
                 <Grid item xs={6} sm={6} md={2} lg={2} xl={1} textAlign="center" >
                     <Button variant="contained" startIcon={<Search />} size="small">
                         Buscar
-                        </Button>
+                    </Button>
                 </Grid>
-                <Grid item xs={6} sm={6} md={2} lg={2} xl={2} >
+                {/* <Grid item xs={6} sm={6} md={2} lg={2} xl={2} >
                     <Button variant="outlined" startIcon={<KeyboardArrowDown />} size="small" onClick={handleClickMoreOptions}>
                         Más Opciones
                         </Button>
-                </Grid>
+                </Grid> */}
             </Grid>
             {
                 showMoreOptions && (
                     <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start" spacing={3} className={styles.headerTableMoreOptionsFilterContainer}>
                         <Grid item xs={12} sm={3} md={2} lg={1} xl={1} >
                             Fecha Incio
-                            </Grid>
+                        </Grid>
                         <Grid item xs={12} sm={9} md={4} lg={3} xl={3} >
                             <TextField
                                 type="datetime-local"
@@ -51,7 +51,7 @@ export default function TableAllProcessPilotsFormFilter() {
                         </Grid>
                         <Grid item xs={12} sm={3} md={2} lg={1} xl={1} >
                             Fecha Fin
-                            </Grid>
+                        </Grid>
                         <Grid item xs={12} sm={9} md={4} lg={3} xl={3} >
                             <TextField
                                 type="datetime-local"
@@ -62,7 +62,7 @@ export default function TableAllProcessPilotsFormFilter() {
                         </Grid>
                         <Grid item xs={12} sm={3} md={2} lg={1} xl={1} >
                             Estado
-                            </Grid>
+                        </Grid>
                         <Grid item xs={12} sm={9} md={4} lg={3} xl={3} >
                             <TextField
                                 select

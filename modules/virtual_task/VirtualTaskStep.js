@@ -5,6 +5,7 @@ import useTestOphthalmologicalVirtualTask from '../../hooks/useTestOphthalmologi
 
 // Constants
 import { typeQuestionary } from "../../constants/QuestionaryQuestions";
+import BtnUploadResultsDepthPerception from "./BtnUploadResultsDepthPerception";
 
 //Styles
 import styles from "../../styles/VirtualTaskStep.module.scss";
@@ -17,6 +18,18 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
 
     const handleDownloadTermsConditions = () => {
         window.open("/terminos_condiciones.pdf", "_blank")
+    }
+
+    const renderBtnUploadResults = () => {
+        switch (code) {
+            case "vt002":
+
+                return (<BtnUploadResultsDepthPerception />);
+
+            default:
+                return (<Button startIcon={<Upload />} variant="contained" component="label" > Subir archivo
+                    <input type="file" hidden /></Button>);
+        }
     }
 
     return (
@@ -82,8 +95,10 @@ export default function VirtualTaskStep({ name = "", code = "", numNextTab = "2"
                                     </Alert>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <Button startIcon={<Upload />} variant="contained" component="label" > Subir archivo
-                                        <input type="file" hidden /></Button>
+                                    {
+                                        renderBtnUploadResults()
+                                    }
+
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Button startIcon={<ArrowBack />} variant="contained" color="inherit" onClick={handleBackTest}  >Regresar </Button>

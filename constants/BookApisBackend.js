@@ -32,6 +32,11 @@ export default {
                         }
                     }
                 },
+                virtual_task: {
+                    depth_perception: {
+                        upload_results: ({ num_document_patient = "", group_id = "0" }) => `/v1/tests/ophthalmological/virtual_task/results/${num_document_patient}/depth_vision_find_results_by_num_doc_participant/?gr_id=${group_id}`
+                    }
+                },
                 questionnarie: {
                     save_answers: '/v1/tests/ophthalmological/virtual_task/questionaries/'
                 }
